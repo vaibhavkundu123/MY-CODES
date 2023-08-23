@@ -52,10 +52,10 @@ void display()
     }
     else
     {
-        printf("\n The elements in the queue are : ");
+        printf("\n The elements in the queue are : \n");
         for (i = front; i <= rear; i++)
         {
-            printf("\t %d", queue[i]);
+            printf("%d \n", queue[i]);
         }
     }
     printf("\n");
