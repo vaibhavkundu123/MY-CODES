@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<conio.h>
-#define MAX 10
+#define MAX 5
 int deque[MAX];
 int front = -1, rear = -1;
 
@@ -9,7 +9,7 @@ void insert()
     int num;
     printf("\n Enter the number to be inserted in the queue : ");
     scanf("%d", &num);
-    if(front == 0 && rear == MAX-1)
+    if((front == 0 && rear == MAX-1)||(front == rear +1))
     {
         printf("\n OVERFLOW");
     }
