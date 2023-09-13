@@ -8,9 +8,9 @@ struct node
     struct node *next;
 };
 
-struct node *start = NULL;
+struct node *Head = NULL;
 
-struct node *create_ll(struct node *start)
+struct node *create_ll(struct node *Head)
 {
     struct node *new_node, *ptr;
     int num;
@@ -21,14 +21,14 @@ struct node *create_ll(struct node *start)
     {
         new_node = (struct node *)malloc(sizeof(struct node));
         new_node->data = num;
-        if (start == NULL)
+        if (Head == NULL)
         {
             new_node->next = NULL;
-            start = new_node;
+            Head = new_node;
         }
         else
         {
-            ptr = start;
+            ptr = Head;
             while (ptr->next != NULL)
                 ptr = ptr->next;
             ptr->next = new_node;
@@ -37,22 +37,22 @@ struct node *create_ll(struct node *start)
         printf("\n Enter the data: ");
         scanf("%d", &num);
     }
-    return start;
+    return Head;
 }
 
-struct node *display(struct node *start)
+struct node *display(struct node *Head)
 {
     struct node *ptr;
-    ptr = start;
+    ptr = Head;
     while (ptr != NULL)
     {
         printf("\t %d", ptr->data);
         ptr = ptr->next;
     }
-    return start;
+    return Head;
 }
 
-struct node *insert_beg(struct node *start)
+struct node *insert_beg(struct node *Head)
 {
     struct node *new_node;
     int num;
@@ -60,12 +60,12 @@ struct node *insert_beg(struct node *start)
     scanf("%d", &num);
     new_node = (struct node *)malloc(sizeof(struct node));
     new_node->data = num;
-    new_node->next = start;
-    start = new_node;
-    return start;
+    new_node->next = Head;
+    Head = new_node;
+    return Head;
 }
 
-struct node *insert_end(struct node *start)
+struct node *insert_end(struct node *Head)
 {
     struct node *ptr, *new_node;
     int num;
@@ -74,14 +74,14 @@ struct node *insert_end(struct node *start)
     new_node = (struct node *)malloc(sizeof(struct node));
     new_node->data = num;
     new_node->next = NULL;
-    ptr = start;
+    ptr = Head;
     while (ptr->next != NULL)
         ptr = ptr->next;
     ptr->next = new_node;
-    return start;
+    return Head;
 }
 
-struct node *insert_before(struct node *start)
+struct node *insert_before(struct node *Head)
 {
     struct node *new_node, *ptr, *preptr;
     int num, val;
@@ -91,7 +91,7 @@ struct node *insert_before(struct node *start)
     scanf("%d", &val);
     new_node = (struct node *)malloc(sizeof(struct node));
     new_node->data = num;
-    ptr = start;
+    ptr = Head;
     while (ptr->data != val)
     {
         preptr = ptr;
@@ -99,10 +99,10 @@ struct node *insert_before(struct node *start)
     }
     preptr->next = new_node;
     new_node->next = ptr;
-    return start;
+    return Head;
 }
 
-struct node *insert_after(struct node *start)
+struct node *insert_after(struct node *Head)
 {
     struct node *new_node, *ptr, *preptr;
     int num, val;
@@ -112,7 +112,7 @@ struct node *insert_after(struct node *start)
     scanf("%d", &val);
     new_node = (struct node *)malloc(sizeof(struct node));
     new_node->data = num;
-    ptr = start;
+    ptr = Head;
     preptr = ptr;
     while (preptr->data != val)
     {
@@ -121,22 +121,22 @@ struct node *insert_after(struct node *start)
     }
     preptr->next = new_node;
     new_node->next = ptr;
-    return start;
+    return Head;
 }
 
-struct node *delete_beg(struct node *start)
+struct node *delete_beg(struct node *Head)
 {
     struct node *ptr;
-    ptr = start;
-    start = start->next;
+    ptr = Head;
+    Head = Head->next;
     free(ptr);
-    return start;
+    return Head;
 }
 
-struct node *delete_end(struct node *start)
+struct node *delete_end(struct node *Head)
 {
     struct node *ptr, *preptr;
-    ptr = start;
+    ptr = Head;
     while (ptr->next != NULL)
     {
         preptr = ptr;
@@ -144,20 +144,20 @@ struct node *delete_end(struct node *start)
     }
     preptr->next = NULL;
     free(ptr);
-    return start;
+    return Head;
 }
 
-struct node *delete_node(struct node *start)
+struct node *delete_node(struct node *Head)
 {
     struct node *ptr, *preptr;
     int val;
     printf("\n Enter the value of the node which has to be deleted: ");
     scanf("%d", &val);
-    ptr = start;
+    ptr = Head;
     if (ptr->data == val)
     {
-        start = delete_beg(start);
-        return start;
+        Head = delete_beg(Head);
+        return Head;
     }
     else
     {
@@ -167,17 +167,17 @@ struct node *delete_node(struct node *start)
         }
         preptr->next = ptr->next;
         free(ptr);
-        return start;
+        return Head;
     }
 }
 
-struct node *delete_after(struct node *start)
+struct node *delete_after(struct node *Head)
 {
     struct node *ptr, *preptr;
     int val;
     printf("\n Enter the value after which the node has to deleted: ");
     scanf("%d", &val);
-    ptr = start;
+    ptr = Head;
     preptr = ptr;
     while (preptr->data != val)
     {
@@ -186,30 +186,30 @@ struct node *delete_after(struct node *start)
     }
     preptr->next = ptr->next;
     free(ptr);
-    return start;
+    return Head;
 }
 
-struct node *delete_list(struct node *start)
+struct node *delete_list(struct node *Head)
 {
     struct node *ptr;
-    if (start != NULL)
+    if (Head != NULL)
     {
-        ptr = start;
+        ptr = Head;
         while (ptr != NULL)
         {
             printf("\n %d is to be deleted next", ptr->data);
-            start = delete_beg(ptr);
-            ptr = start;
+            Head = delete_beg(ptr);
+            ptr = Head;
         }
     }
-    return start;
+    return Head;
 }
 
-struct node *sort_list(struct node *start)
+struct node *sort_list(struct node *Head)
 {
     struct node *ptr1, *ptr2;
     int temp;
-    ptr1 = start;
+    ptr1 = Head;
     while (ptr1->next != NULL)
     {
         ptr2 = ptr1->next;
@@ -225,7 +225,7 @@ struct node *sort_list(struct node *start)
         }
         ptr1 = ptr1->next;
     }
-    return start;
+    return Head;
 }
 
 int main(int argc, char *argv[])
@@ -252,42 +252,42 @@ int main(int argc, char *argv[])
         switch (option)
         {
         case 1:
-            start = create_ll(start);
+            Head = create_ll(Head);
             printf("\n LINKED LIST CREATED");
             break;
         case 2:
-            start = display(start);
+            Head = display(Head);
             break;
         case 3:
-            start = insert_beg(start);
+            Head = insert_beg(Head);
             break;
         case 4:
-            start = insert_end(start);
+            Head = insert_end(Head);
             break;
         case 5:
-            start = insert_before(start);
+            Head = insert_before(Head);
             break;
         case 6:
-            start = insert_after(start);
+            Head = insert_after(Head);
             break;
         case 7:
-            start = delete_beg(start);
+            Head = delete_beg(Head);
             break;
         case 8:
-            start = delete_end(start);
+            Head = delete_end(Head);
             break;
         case 9:
-            start = delete_node(start);
+            Head = delete_node(Head);
             break;
         case 10:
-            start = delete_after(start);
+            Head = delete_after(Head);
             break;
         case 11:
-            start = delete_list(start);
+            Head = delete_list(Head);
             printf("\n LINKED LIST DELETED");
             break;
         case 12:
-            start = sort_list(start);
+            Head = sort_list(Head);
             break;
         }
     } while (option != 13);
