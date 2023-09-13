@@ -1,26 +1,33 @@
-#include<stdio.h>
+#include <stdio.h>
 
 // BUBBLE SORT FUNCTION
-int BubbleSort(int array[], int size) {
+int BubbleSort(int array[], int size)
+{
     int i, j, temp;
-    for(i = 0; i < size - 1; i++) {
-        for(j = 0; j < size - i - 1; j++) {
-            if(array[j] > array[j + 1]) {
+    for (i = 0; i < size - 1; i++)
+    {
+        for (j = 0; j < size - i - 1; j++)
+        {
+            if (array[j] > array[j + 1])
+            {
                 temp = array[j];
                 array[j] = array[j + 1];
-                array[j + 1] = temp; 
+                array[j + 1] = temp;
             }
         }
     }
 }
 
 // INSERTION SORT FUNCTION
-int InsertionSort(int array[], int size) {
+int InsertionSort(int array[], int size)
+{
     int i, j, temp;
-    for(i = 1; i < size; i++) {
+    for (i = 1; i < size; i++)
+    {
         temp = array[i];
         j = i - 1;
-        while(j >= 0 && array[j] > temp) {
+        while (j >= 0 && array[j] > temp)
+        {
             array[j + 1] = array[j];
             j--;
         }
@@ -29,12 +36,16 @@ int InsertionSort(int array[], int size) {
 }
 
 // SELECTION SORT FUNCTION
-int SelectionSort(int array[], int size) {
+int SelectionSort(int array[], int size)
+{
     int i, j, temp, min;
-    for(i = 0; i < size - 1; i++) {
+    for (i = 0; i < size - 1; i++)
+    {
         min = i;
-        for(j = i + 1; j < size; j++) {
-            if(array[j] < array[min]) {
+        for (j = i + 1; j < size; j++)
+        {
+            if (array[j] < array[min])
+            {
                 min = j;
             }
         }
@@ -45,103 +56,123 @@ int SelectionSort(int array[], int size) {
 }
 
 // MERGE SORT FUNCTION
-int Merge(int array[], int l, int m, int r) {
-    int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
-    
-    int L[n1], R[n2];
-    
-    for(i = 0; i < n1; i++) {
-        L[i] = array[l + i];
-    }
-    for(j = 0; j < n2; j++) {
-        R[j] = array[m + 1 + j];
-    }
-    
-    i = 0;
-    j = 0;
-    k = l;
-    
-    while(i < n1 && j < n2) {
-        if(L[i] <= R[j]) {
-            array[k] = L[i];
+void merge(int arr[], int beg, int mid, int end)
+{
+    int i = beg, j = mid + 1, index = beg, temp[100], k;
+    while ((i <= mid) && (j <= end))
+    {
+        if (arr[i] < arr[j])
+        {
+            temp[index] = arr[i];
             i++;
         }
-        else {
-            array[k] = R[j];
+        else
+        {
+            temp[index] = arr[j];
             j++;
         }
-        k++;
+        index++;
     }
-    
-    while(i < n1) {
-        array[k] = L[i];
-        i++;
-        k++;
+    if (i > mid)
+    {
+        while (j <= end)
+        {
+            temp[index] = arr[j];
+            j++;
+            index++;
+        }
     }
-    
-    while(j < n2) {
-        array[k] = R[j];
-        j++;
-        k++;
+    else
+    {
+        while (i <= mid)
+        {
+            temp[index] = arr[i];
+            i++;
+            index++;
+        }
     }
+    for (k = beg; k < index; k++)
+        arr[k] = temp[k];
 }
-
-int MergeSort(int array[], int l, int r) {
-    if(l < r) {
-        int m = l + (r - l) / 2;
-        
-        MergeSort(array, l, m);
-        MergeSort(array, m + 1, r);
-        
-        Merge(array, l, m, r);
+void MergeSort(int arr[], int beg, int end)
+{
+    int mid;
+    if (beg < end)
+    {
+        mid = (beg + end) / 2;
+        MergeSort(arr, beg, mid);
+        MergeSort(arr, mid + 1, end);
+        merge(arr, beg, mid, end);
     }
 }
 
 // QUICK SORT FUNCTION
-int Partition(int array[], int low, int high) {
-    int pivot = array[high];
-    int i = (low - 1);
-    int j, temp;
-    for(j = low; j <= high - 1; j++) {
-        if(array[j] < pivot) {
-            i++;
-            temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+int partition(int arr[], int beg, int end)
+{
+    int left, right, temp, loc, flag;
+    loc = left = beg;
+    right = end;
+    flag = 0;
+    while (flag != 1)
+    {
+        while ((arr[loc] <= arr[right]) && (loc != right))
+            right--;
+        if (loc == right)
+            flag = 1;
+        else if (arr[loc] > arr[right])
+        {
+            temp = arr[loc];
+            arr[loc] = arr[right];
+            arr[right] = temp;
+            loc = right;
+        }
+        if (flag != 1)
+        {
+            while ((arr[loc] >= arr[left]) && (loc != left))
+                left++;
+            if (loc == left)
+                flag = 1;
+            else if (arr[loc] < arr[left])
+            {
+                temp = arr[loc];
+                arr[loc] = arr[left];
+                arr[left] = temp;
+                loc = left;
+            }
         }
     }
-    temp = array[i + 1];
-    array[i + 1] = array[high];
-    array[high] = temp;
-    return (i + 1);
+    return loc;
 }
-
-int QuickSort(int array[], int low, int high) {
-    if(low < high) {
-        int pi = Partition(array, low, high);
-        
-        QuickSort(array, low, pi - 1);
-        QuickSort(array, pi + 1, high);
+void QuickSort(int arr[], int beg, int end)
+{
+    int loc;
+    if (beg < end)
+    {
+        loc = partition(arr, beg, end);
+        QuickSort(arr, beg, loc - 1);
+        QuickSort(arr, loc + 1, end);
     }
 }
 
 // DISPLAY FUNCTION
-int Display(int array[], int size) {
+int Display(int array[], int size)
+{
     int i;
     printf("Sorted array is: \n");
-    for(i = 0; i < size; i++) {
+    for (i = 0; i < size; i++)
+    {
         printf("%d \n", array[i]);
     }
 }
 
-int main() {
+int main()
+{
     int array[100], size, i, choice;
     printf("Enter the size of the array: ");
     scanf("%d", &size);
     printf("Enter the elements of the array: \n");
-    for(i = 0; i < size; i++) {
+    for (i = 0; i < size; i++)
+    {
         scanf("%d", &array[i]);
     }
     printf("Enter 1 for Bubble Sort \n");
@@ -151,29 +182,30 @@ int main() {
     printf("Enter 5 for Quick Sort \n");
     printf("Enter your choice: ");
     scanf("%d", &choice);
-    switch(choice) {
-        case 1:
-            BubbleSort(array, size);
-            Display(array, size);
-            break;
-        case 2:
-            InsertionSort(array, size);
-            Display(array, size);
-            break;
-        case 3:
-            SelectionSort(array, size);
-            Display(array, size);
-            break;
-        case 4:
-            MergeSort(array, 0, size - 1);
-            Display(array, size);
-            break;
-        case 5:
-            QuickSort(array, 0, size - 1);
-            Display(array, size);
-            break;
-        default:
-            printf("Invalid choice \n");
+    switch (choice)
+    {
+    case 1:
+        BubbleSort(array, size);
+        Display(array, size);
+        break;
+    case 2:
+        InsertionSort(array, size);
+        Display(array, size);
+        break;
+    case 3:
+        SelectionSort(array, size);
+        Display(array, size);
+        break;
+    case 4:
+        MergeSort(array, 0, size - 1);
+        Display(array, size);
+        break;
+    case 5:
+        QuickSort(array, 0, size - 1);
+        Display(array, size);
+        break;
+    default:
+        printf("Invalid choice \n");
     }
     return 0;
 }
