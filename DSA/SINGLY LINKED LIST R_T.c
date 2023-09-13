@@ -8,6 +8,8 @@ struct node
     struct node *next;
 };
 
+struct node *start = NULL;
+
 struct node *create_ll(struct node *start)
 {
     struct node *new_node, *ptr;
