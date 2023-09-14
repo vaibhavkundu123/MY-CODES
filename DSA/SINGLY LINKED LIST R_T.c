@@ -40,6 +40,36 @@ struct node *create_ll(struct node *Head)
     return Head;
 }
 
+/*
+struct node *temp = NULL;
+struct node *prev = NULL;
+struct node *create_ll(struct node *Head)
+{
+	char choice;
+	do {
+		temp = (struct node *)malloc(sizeof(struct node));
+		if(temp == NULL) {
+			printf("Memory allocation failed\n");
+			return NULL;
+		}
+		printf("\n Enter the data: ");
+    	scanf("%d", &(temp -> data));
+    	temp -> next = NULL;
+    	if(Head == NULL) {
+    		Head = temp;
+    	}
+    	else {
+    		prev -> next = temp;
+    	}
+    	prev = temp;
+    	fflush(stdin);
+    	printf("Do you want to create more nodes? (y/n):");
+    	scanf("%c", &choice);
+	}while(choice == 'y' || choice == 'Y');
+	return Head;
+}
+*/
+
 struct node *display(struct node *Head)
 {
     struct node *ptr;
