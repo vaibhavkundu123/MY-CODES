@@ -9,7 +9,7 @@ def unique(l):
             duplicate_list.append(i)
     return unique_list
 
+
 l = input("Enter the elements separated by spaces: ").lower().split()
 u = unique(l)
-print(f"Unique Elements: {u}") 
-            
+print(f"Unique Elements: {u}")
