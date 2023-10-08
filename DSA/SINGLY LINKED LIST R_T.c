@@ -79,6 +79,7 @@ struct node *display(struct node *Head)
         printf("\t %d", ptr->data);
         ptr = ptr->next;
     }
+    printf("\t NULL");
     return Head;
 }
 
@@ -113,44 +114,45 @@ struct node *insert_end(struct node *Head)
 
 struct node *insert_before(struct node *Head)
 {
-    struct node *new_node, *ptr, *preptr;
-    int num, val;
+    struct node *new_node, *ptr;
+    int num, pos, i = 1;
     printf("\n Enter the data: ");
     scanf("%d", &num);
-    printf("\n Enter the value before which the data has to be inserted: ");
-    scanf("%d", &val);
+    printf("\n Enter the node before which the data has to be inserted: ");
+    scanf("%d", &pos);
     new_node = (struct node *)malloc(sizeof(struct node));
     new_node->data = num;
+    new_node->next = NULL;
     ptr = Head;
-    while (ptr->data != val)
+    while (i != pos - 1)
     {
-        preptr = ptr;
         ptr = ptr->next;
+        i++;
     }
-    preptr->next = new_node;
-    new_node->next = ptr;
+    new_node->next = ptr->next;
+    ptr->next = new_node;
     return Head;
 }
 
 struct node *insert_after(struct node *Head)
 {
-    struct node *new_node, *ptr, *preptr;
-    int num, val;
+    struct node *new_node, *ptr;
+    int num, pos, i = 0;
     printf("\n Enter the data: ");
     scanf("%d", &num);
-    printf("\n Enter the value after which the data has to be inserted: ");
-    scanf("%d", &val);
+    printf("\n Enter the node after which the data has to be inserted: ");
+    scanf("%d", &pos);
     new_node = (struct node *)malloc(sizeof(struct node));
     new_node->data = num;
+    new_node->next = NULL;
     ptr = Head;
-    preptr = ptr;
-    while (preptr->data != val)
+    while (i != pos - 1)
     {
-        preptr = ptr;
         ptr = ptr->next;
+        i++;
     }
-    preptr->next = new_node;
-    new_node->next = ptr;
+    new_node->next = ptr->next;
+    ptr->next = new_node;
     return Head;
 }
 
@@ -166,10 +168,11 @@ struct node *delete_beg(struct node *Head)
 struct node *delete_end(struct node *Head)
 {
     struct node *ptr, *preptr;
-    ptr = Head;
+    preptr = Head;
+    ptr = preptr->next;
     while (ptr->next != NULL)
     {
-        preptr = ptr;
+        preptr = preptr->next;
         ptr = ptr->next;
     }
     preptr->next = NULL;
@@ -180,39 +183,16 @@ struct node *delete_end(struct node *Head)
 struct node *delete_node(struct node *Head)
 {
     struct node *ptr, *preptr;
-    int val;
-    printf("\n Enter the value of the node which has to be deleted: ");
-    scanf("%d", &val);
-    ptr = Head;
-    if (ptr->data == val)
+    int pos, i = 0;
+    printf("\n Enter the node which has to be deleted: ");
+    scanf("%d", &pos);
+    preptr = Head;
+    ptr = preptr->next;
+    if (i != pos - 1)
     {
-        Head = delete_beg(Head);
-        return Head;
-    }
-    else
-    {
-        {
-            preptr = ptr;
-            ptr = ptr->next;
-        }
-        preptr->next = ptr->next;
-        free(ptr);
-        return Head;
-    }
-}
-
-struct node *delete_after(struct node *Head)
-{
-    struct node *ptr, *preptr;
-    int val;
-    printf("\n Enter the value after which the node has to deleted: ");
-    scanf("%d", &val);
-    ptr = Head;
-    preptr = ptr;
-    while (preptr->data != val)
-    {
-        preptr = ptr;
+        preptr = preptr->next;
         ptr = ptr->next;
+        i++;
     }
     preptr->next = ptr->next;
     free(ptr);
@@ -258,7 +238,56 @@ struct node *sort_list(struct node *Head)
     return Head;
 }
 
-int main(int argc, char *argv[])
+struct node *search(struct node *Head)
+{
+    struct node *ptr;
+    int num;
+    ptr = Head;
+    printf("\n Enter the data to be searched: ");
+    scanf("%d", &num);
+    while (ptr != NULL)
+    {
+        if (ptr->data == num)
+        {
+            printf("\n The given data %d is present", num);
+            break;
+        }
+        else
+            ptr = ptr->next;
+    }
+    printf("\n The given data %d is not present", num);
+    return Head;
+}
+
+int count(struct node *Head)
+{
+    struct node *temp;
+    int count = 1;
+    temp = Head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+        count++;
+    }
+    return count;
+}
+
+struct node *reverse(struct node *Head)
+{
+    struct node *prev = NULL;
+    struct node *current = Head;
+    struct node *next;
+    while (current != NULL)
+    {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    return prev;
+}
+
+int main()
 {
     int option;
     do
@@ -273,10 +302,12 @@ int main(int argc, char *argv[])
         printf("\n 7: Delete a node from the beginning");
         printf("\n 8: Delete a node from the end");
         printf("\n 9: Delete a given node");
-        printf("\n 10: Delete a node after a given node");
-        printf("\n 11: Delete the entire list");
-        printf("\n 12: Sort the list");
-        printf("\n 13: EXIT");
+        printf("\n 10: Delete the entire list");
+        printf("\n 11: Sort the list");
+        printf("\n 12: Search an element in the list");
+        printf("\n 13: Count no. of nodes");
+        printf("\n 14: Reverse the list");
+        printf("\n 15: EXIT");
         printf("\n\n Enter your option: ");
         scanf("%d", &option);
         switch (option)
@@ -310,16 +341,21 @@ int main(int argc, char *argv[])
             Head = delete_node(Head);
             break;
         case 10:
-            Head = delete_after(Head);
-            break;
-        case 11:
             Head = delete_list(Head);
             printf("\n LINKED LIST DELETED");
             break;
-        case 12:
+        case 11:
             Head = sort_list(Head);
             break;
+        case 12:
+            Head = search(Head);
+            break;
+        case 13:
+            printf("\n No. of nodes in the list = %d", count(Head));
+            break;
+        case 14:
+            Head = reverse(Head);
         }
-    } while (option != 13);
+    } while (option != 15);
     return 0;
 }

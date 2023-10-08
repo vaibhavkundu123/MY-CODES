@@ -36,7 +36,7 @@ print(f"Median: {median}")
 print(f"Standard Deviation: {std_dev}") """
 
 import random, math
-numbers = [random.randint(1, 10) for _ in range(10)]
+numbers = [random.randint(1, 10) for i in range(10)]
 mean = sum(numbers) / len(numbers)
 numbers.sort()
 median = numbers[len(numbers)//2] if len(numbers) % 2 != 0 else sum(numbers[len(numbers)//2-1:len(numbers)//2+1]) / 2
