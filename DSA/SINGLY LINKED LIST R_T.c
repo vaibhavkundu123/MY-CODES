@@ -255,7 +255,6 @@ struct node *search(struct node *Head)
         else
             ptr = ptr->next;
     }
-    printf("\n The given data %d is not present", num);
     return Head;
 }
 

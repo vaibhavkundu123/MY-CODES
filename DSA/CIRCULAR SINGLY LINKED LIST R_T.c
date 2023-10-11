@@ -160,7 +160,7 @@ struct node *delete_node(struct node *Head)
     scanf("%d", &pos);
     preptr = Head;
     ptr = preptr->next;
-    if (i != pos)
+    if (i != pos - 1)
     {
         preptr = preptr->next;
         ptr = ptr->next;
