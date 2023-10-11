@@ -221,7 +221,6 @@ struct node *search(struct node *Head)
         else
             ptr = ptr->next;
     }
-    printf("\n The given data %d is not present", num);
     return Head;
 }
 
@@ -243,13 +242,17 @@ struct node *reverse(struct node *Head)
     struct node *prev = NULL;
     struct node *current = Head;
     struct node *next;
-    while (current != Tail)
-    {
+    if (Head == NULL) {
+        printf("List is empty.\n");
+    }
+    do {
         next = current->next;
         current->next = prev;
         prev = current;
         current = next;
-    }
+    } while (current != Head);
+    Head->next = prev;
+    Head = prev;
     return prev;
 }
 

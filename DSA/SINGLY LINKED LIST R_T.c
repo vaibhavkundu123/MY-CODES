@@ -183,12 +183,12 @@ struct node *delete_end(struct node *Head)
 struct node *delete_node(struct node *Head)
 {
     struct node *ptr, *preptr;
-    int pos, i = 0;
+    int pos, i = 1;
     printf("\n Enter the node which has to be deleted: ");
     scanf("%d", &pos);
     preptr = Head;
     ptr = preptr->next;
-    if (i != pos - 1)
+    while (i != pos - 1)
     {
         preptr = preptr->next;
         ptr = ptr->next;
@@ -277,6 +277,9 @@ struct node *reverse(struct node *Head)
     struct node *prev = NULL;
     struct node *current = Head;
     struct node *next;
+    if (Head == NULL) {
+        printf("List is empty.\n");
+    }
     while (current != NULL)
     {
         next = current->next;
