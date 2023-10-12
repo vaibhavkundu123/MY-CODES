@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <conio.h>
 #include <malloc.h>
 
@@ -8,13 +9,12 @@ struct node
     struct node *next;
 };
 
+struct queue *q;
 struct queue
 {
     struct node *front;
     struct node *rear;
 };
-
-struct queue *q;
 
 void create_queue(struct queue *q)
 {
@@ -90,6 +90,7 @@ int peek(struct queue *q)
 int main()
 {
     int val, option;
+    struct queue *q = (struct queue *)malloc(sizeof(struct queue));
     create_queue(q);
     do
     {
@@ -120,7 +121,6 @@ int main()
             break;
         }
     } while (option != 5);
-    getch();
     return 0;
 }
 
