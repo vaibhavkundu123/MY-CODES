@@ -31,7 +31,7 @@ class Stack:
         print("NULL")
 
     def is_full(self):
-        return False  # Assuming an unlimited stack size
+        return False
 
 
 class Queue:
@@ -68,7 +68,7 @@ class Queue:
         print("NULL")
 
     def is_full(self):
-        return False  # Assuming an unlimited queue size
+        return False
 
 
 def main():
