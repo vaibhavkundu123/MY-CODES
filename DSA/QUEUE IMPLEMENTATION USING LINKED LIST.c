@@ -47,11 +47,11 @@ struct queue *delete_element(struct queue *q)
     struct node *ptr;
     ptr = q->front;
     if (q->front == NULL)
-        printf("\n UNDERFLOW");
+        printf("\n UNDERFLOW \n");
     else
     {
         q->front = q->front->next;
-        printf("\n The value being deleted is : %d", ptr->data);
+        printf("\n The value being deleted is : %d \n", ptr->data);
         free(ptr);
     }
     return q;
@@ -62,7 +62,7 @@ struct queue *display(struct queue *q)
     struct node *ptr;
     ptr = q->front;
     if (ptr == NULL)
-        printf("\n QUEUE IS EMPTY");
+        printf("\n QUEUE IS EMPTY \n");
     else
     {
         printf("\n");
@@ -72,6 +72,7 @@ struct queue *display(struct queue *q)
             ptr = ptr->next;
         }
         printf("%d\t", ptr->data);
+        printf("NULL");
     }
     return q;
 }
@@ -80,7 +81,7 @@ int peek(struct queue *q)
 {
     if (q->front == NULL)
     {
-        printf("\n QUEUE IS EMPTY");
+        printf("\n QUEUE IS EMPTY \n");
         return -1;
     }
     else
@@ -97,6 +98,7 @@ int main()
         printf("\n *****MAIN MENU*****");
         printf("\n 1. INSERT");
         printf("\n 2. DELETE");
+        printf("\n 3. PEEK");
         printf("\n 4. DISPLAY");
         printf("\n 5. EXIT");
         printf("\n Enter your option : ");
@@ -114,7 +116,7 @@ int main()
         case 3:
             val = peek(q);
         if (val != -1)
-                printf("\n The value at front of queue is : %d", val);
+                printf("\n The value at front of queue is : %d \n", val);
             break;
         case 4:
             q = display(q);
@@ -123,7 +125,3 @@ int main()
     } while (option != 5);
     return 0;
 }
-
-
-
-

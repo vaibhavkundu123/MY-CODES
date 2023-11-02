@@ -34,11 +34,11 @@ struct stack *pop(struct stack *top)
     struct stack *ptr;
     ptr = top;
     if (top == NULL)
-        printf("\n STACK UNDERFLOW");
+        printf("\n STACK UNDERFLOW \n");
     else
     {
         top = top->next;
-        printf("\n The value being deleted is: %d", ptr->data);
+        printf("\n The value being deleted is: %d \n", ptr->data);
         free(ptr);
     }
     return top;
@@ -57,7 +57,7 @@ struct stack *display(struct stack *top)
     struct stack *ptr;
     ptr = top;
     if (top == NULL)
-        printf("\n STACK IS EMPTY");
+        printf("\n STACK IS EMPTY \n");
     else
     {
         while (ptr != NULL)
@@ -65,6 +65,7 @@ struct stack *display(struct stack *top)
             printf("\n %d", ptr->data);
             ptr = ptr->next;
         }
+        printf("\n NULL \n");
     }
     return top;
 }
@@ -97,7 +98,7 @@ int main()
             if (val != -1)
                 printf("\n The value at the top of stack is: %d", val);
             else
-                printf("\n STACK IS EMPTY");
+                printf("\n STACK IS EMPTY \n");
             break;
         case 4:
             top = display(top);
