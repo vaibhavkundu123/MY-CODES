@@ -96,10 +96,17 @@ def merge(array, left, right):
         j += 1
         k += 1
 
+def print_array(array):
+    for element in array:
+        print(element, end=" ")
+    print()
 
+    
 def main():
-    print("Enter the array to sort:")
-    array = list(map(int, input().split(" ")))
+    n = int(input("Enter the number of elements of the array:"))
+    array = []
+    for i in range(n):
+        array.append(int(input(f"Enter element {i+1}: ")))
 
     print("Menu:")
     print("1. Bubble sort")
@@ -124,7 +131,8 @@ def main():
         print("Invalid choice.")
         return
 
-    print("Sorted array:", array)
+    print("Sorted array:")
+    print_array(array)
 
 
 if __name__ == "__main__":
