@@ -1,0 +1,242 @@
+CREATE TABLE users
+(
+	id int unsigned,
+    name varchar(100),
+    email varchar(150),
+    password varchar(100),
+    contact varchar(15),
+    address text,
+    dob date,
+    gender enum("M","F","O"),
+    status boolean
+)
+
+
+CREATE TABLE students1
+(
+	id INT NOT NULL unique,
+    name varchar(100) not null,
+    email varchar(150) not null unique,
+    age tinyint check (age >= 18),
+    status boolean default 1
+)
+
+
+CREATE TABLE students_city
+(
+	id INT NOT NULL unique auto_increment,
+    name varchar(100) not null,
+    email varchar(100) not null unique,
+    city_id int null,
+    primary key(id),
+    foreign key(city_id) references city(cid)
+)
+
+
+INSERT INTO users
+(id,name,email,password,contact,address,dob,gender,status)
+VALUES
+(2,"Jenny","jenny@gmail.com","12345678","987654321","Jodhpur,Rajasthan","1999-01-10","F","1"),
+(3,"Bhagirath","bhagirath@gmail.com","123456789","98765431","Rajasthan","1999-01-10","M",1)
+
+
+INSERT INTO users VALUES
+(4,"Demo","demo@gmail.com","12345678","987654321","Jodhpur,Rajasthan","1999-01-10","F","1"),
+(5,"Test","test@gmail.com","123456789","98765431","Rajasthan","1999-01-10","M",1)
+
+
+SELECT id,name AS "Student Name",age FROM students
+
+
+SELECT * FROM students
+
+
+SELECT id,name,age FROM students WHERE age =/!=/>/</>=/<= 20;
+
+
+SELECT * FROM students WHERE age =/!=/>/</>=/<= 20;
+
+
+SELECT * FROM students2
+WHERE age >= 18 AND age <= 25 AND city = "Agra" AND gender = "M"
+
+
+SELECT * FROM students2
+WHERE city = "Agra" OR city = "Jodpur"
+
+
+SELECT * FROM students2
+WHERE NOT city = "Agra"
+
+
+SELECT * FROM students2
+WHERE NOT city = "Agra" AND NOT city = "Jodpur"
+
+
+SELECT * FROM students2
+WHERE age IN(19,21,23)
+
+
+"%" = any no. of charecters
+"_" = only one charecter
+
+
+SELECT * FROM students2
+WHERE name LIKE "%a"
+
+
+SELECT * FROM students2
+WHERE name LIKE "%a%"
+
+
+SELECT * FROM students2
+WHERE name LIKE "a%"
+
+
+SELECT * FROM students2
+WHERE name LIKE "a____"
+
+
+SELECT * FROM students2
+WHERE name LIKE "a____%"
+
+
+SELECT * FROM students2
+WHERE age BETWEEN 20 AND 25
+
+
+SELECT * FROM students2
+WHERE age NOT BETWEEN 20 AND 25
+
+
+SELECT * FROM students2
+ORDER BY name ASC
+
+
+SELECT * FROM students2
+ORDER BY name DESC
+
+
+SELECT DISTINCT city FROM students2
+
+
+SELECT DISTINCT age FROM students2 ORDER BY age ASC
+
+
+SELECT * FROM students2 where gender is NULL AND city is NULL
+
+
+SELECT * FROM students2 where gender is NULL 
+
+
+SELECT * FROM students2 where gender is NOT NULL
+
+
+SELECT * FROM students2 LIMIT 5
+
+
+SELECT * FROM students2 ORDER BY name DESC LIMIT 5
+
+
+SELECT * FROM students2 WHERE age > 20 LIMIT 5
+
+
+SELECT * FROM students2 LIMIT 5 OFFSET 1
+
+
+SELECT count(id) FROM students3 WHERE fees > 5000
+
+
+SELECT sum(fees) FROM students3
+
+
+SELECT avg(fees) FROM students3
+
+
+SELECT avg(fees) as 'avgFees' FROM students3
+
+
+SELECT min(fees)FROM students3
+
+
+SELECT max(fees)FROM students3
+
+
+UPDATE students3 SET age = 35 WHERE id = 5
+
+
+UPDATE students3 SET age = 35 WHERE id = 5
+
+
+delete from students3 where id IN (5,6)
+
+
+commit
+
+
+rollback
+
+
+select * from students_city inner join city on students_city.city_id = city.cid
+
+
+select * from students_city join city on students_city.city_id = city.cid
+
+
+select * from students_city left join city on students_city.city = city.id
+
+
+select * from students_city right join city on students_city.city = city.id
+
+
+select * from students_city cross join city
+
+
+select * from students_cities_courses
+inner join cities 
+on students_cities_courses.cid = cities.id
+inner join courses
+on students_cities_courses.courseid = courses.id
+
+
+select * from students_cities_courses
+left join cities 
+on students_cities_courses.cid = cities.id
+inner join courses
+on students_cities_courses.courseid = courses.id
+
+
+select cid, count(cid) from students_cities_courses group by (cid)
+
+
+
+select cid, cities.name, count(cid) from students_cities_courses
+inner join cities
+on students_cities_courses.cid = cities.id
+group by (cid) / select cid, cities.name, count(cid) as total from students_cities_courses
+inner join cities
+on students_cities_courses.cid = cities.id
+group by (cid)
+
+
+
+select cid, cities.name, count(cid) as total from students_cities_courses
+inner join cities
+on students_cities_courses.cid = cities.id
+group by (cid)
+having count(cid) >= 2
+
+
+select name from students_cities_courses
+where cid = (select id from cities where name = "Jodhpur")
+
+
+select name from students_cities_courses
+where exists (select id from cities where name = "Delhi")
+
+
+select name from students_cities_courses
+where not exists (select id from cities where name = "Delhi")
+
+
+
