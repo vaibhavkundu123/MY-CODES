@@ -1,0 +1,6 @@
+Step 1: [INITIALIZE] SET PTR = HEAD
+Step 2: Repeat Steps 3 and 4 while PTR != NULL
+Step 3: Apply Process to PTR -> DATA
+Step 4: SET PTR = PTR -> NEXT
+[END OF LOOP]
+Step 5: EXIT

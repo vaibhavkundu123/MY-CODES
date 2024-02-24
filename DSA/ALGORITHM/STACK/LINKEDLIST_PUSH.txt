@@ -1,0 +1,15 @@
+Step 1: Allocate memory for the new
+node and name it as NEW_NODE
+Step 2: SET NEW_NODE -> DATA = VAL
+Step 3: IF TOP = NULL
+SET NEW_NODE NEXT = NULL
+SET TOP = NEW_NODE
+ELSE
+SET NEW_NODE NEXT = TOP
+SET TOP = NEW_NODE
+[END OF IF]
+Step 4: END
+
+
+
+

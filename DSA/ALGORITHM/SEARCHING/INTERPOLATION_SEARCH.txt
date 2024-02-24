@@ -1,0 +1,21 @@
+INTERPOLATION_SEARCH (A, lower_bound, upper_bound, VAL)
+
+Step 1: [INITIALIZE] SET LOW = lower_bound, 
+HIGH = upper_bound, POS = –1
+Step 2: Repeat Steps 3 to 4 while LOW <= HIGH
+Step 3: SET MID = LOW + (HIGH – LOW) × 
+((VAL – A[LOW]) / (A[HIGH] – A[LOW]))
+Step 4: IF VAL = A[MID]
+ POS = MID 
+ PRINT POS
+ Go to Step 6
+ ELSE IF VAL < A[MID] 
+		 SET HIGH = MID – 1
+ ELSE 
+ SET LOW = MID + 1
+ [END OF IF]
+[END OF LOOP]
+Step 5: IF POS = –1
+ PRINT "VALUE IS NOT PRESENT IN THE ARRAY"
+ [END OF IF]
+Step 6: EXIT

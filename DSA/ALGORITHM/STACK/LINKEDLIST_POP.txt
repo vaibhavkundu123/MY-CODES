@@ -1,0 +1,12 @@
+Step 1: IF TOP = NULL
+PRINT UNDERFLOW
+Goto Step 5
+[END OF IF]
+Step 2: SET PTR = TOP
+Step 3: SET TOP = TOP -> NEXT
+Step 4: FREE PTR
+Step 5: END
+
+
+
+

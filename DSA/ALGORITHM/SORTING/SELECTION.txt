@@ -1,0 +1,19 @@
+SMALLEST (ARR, K, N, POS)
+
+Step 1: [INITIALIZE] SET SMALL = ARR[K]
+Step 2: [INITIALIZE] SET POS=K
+Step 3: Repeat for J= K+1 to N-1
+IF SMALL > ARR[J]
+SET SMALL = ARR[J]
+SET POS = J
+[END OF IF]
+[END OF LOOP]
+Step 4: RETURN POS
+
+SELECTION SORT(ARR, N)
+
+Step 1: Repeat Steps 2 and 3 for K=1 to N-1
+Step 2: CALL SMALLEST(ARR, K, N, POS)
+Step 3: SWAP A[K] with ARR[POS]
+[END OF LOOP]
+Step 4: EXIT

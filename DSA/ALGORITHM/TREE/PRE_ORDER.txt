@@ -1,0 +1,6 @@
+Step 1: Repeat Steps 2 to 4 while TREE != NULL
+Step 2: Write TREE -> DATA
+Step 3: PREORDER(TREE -> LEFT)
+Step 4: PREORDER(TREE -> RIGHT)
+[END OF LOOP]
+Step 5: END

@@ -1,0 +1,11 @@
+Tower(N,Beg,Aux,End)
+Step 1: If N = 1 then
+a. Write Beg -> End
+b. Return
+[END OF IF]
+Step 2: [Move N-1 disk from Peg Beg to Aux]
+Call Tower(N-1,Beg,End,Aux)
+Step 3: Set Beg -> End
+Step 4: [Move N-1 disk from Peg Aux to End]
+Call Tower(N-1,Aux,Beg,End)
+Step 5: Return

@@ -1,0 +1,13 @@
+Step 1: IF HEAD = TAIL
+PRINT "UNDERFLOW"
+RETURN
+
+Step 2: SET TEMP = TAIL
+Step 3: I = 0
+Step 4: REPEAT STEP 5 AND 6 UNTIL I != POS - 1
+Step 5: TEMP = TEMP -> NEXT
+Step 6: I++
+Step 7: TEMP -> PREV -> NEXT = TEMP -> NEXT
+Step 8: TAIL -> NEXT -> PREV = TEMP -> PREV
+Step 9: FREE(TEMP)
+Step 10: EXIT

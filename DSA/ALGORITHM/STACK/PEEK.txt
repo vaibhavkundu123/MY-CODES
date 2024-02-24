@@ -1,0 +1,5 @@
+Step 1: IF TOP = NULL
+PRINT STACK IS EMPTY
+Goto Step 3
+Step 2: RETURN STACK[TOP]
+Step 3: END

@@ -1,0 +1,9 @@
+BUBBLE_SORT(A, N)
+
+Step 1: Repeat Step 2 For I = 0 to N-1
+Step 2: Repeat For J= 0 to N-I
+Step 3: IF A[J] > A[J+1]
+SWAP A[J] and A[J+1]
+[END OF INNER LOOP]
+[END OF OUTER LOOP]
+Step 4: EXIT

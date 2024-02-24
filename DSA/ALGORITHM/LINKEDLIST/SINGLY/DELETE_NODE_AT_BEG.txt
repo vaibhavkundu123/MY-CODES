@@ -1,0 +1,8 @@
+Step 1: IF HEAD = NULL
+PRINT "UNDERFLOW"
+RETURN
+
+Step 2: SET PTR = HEAD
+Step 3: HEAD = HEAD -> NEXT
+Step 4: FREE(PTR)
+Step 5: EXIT

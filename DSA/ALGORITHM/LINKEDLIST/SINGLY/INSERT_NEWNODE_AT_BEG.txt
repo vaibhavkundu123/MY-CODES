@@ -1,0 +1,7 @@
+Step 1: PTR = (Struct NODE*)malloc(sizeof(struct NODE))
+Step 2: SET PTR -> DATA = INFO
+Step 3: SET PTR -> NEXT = NULL
+
+Step 4: PTR -> NEXT = HEAD
+Step 5: HEAD = PTR
+Step 6: EXIT

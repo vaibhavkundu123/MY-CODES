@@ -1,0 +1,42 @@
+MERGE (ARR, BEG, MID, END)
+
+Step 1: [INITIALIZE] SETI= BEG,J= MID+1, INDEX =
+Step 2: Repeat while (I <= MID) AND (J<=END)
+IF ARR[I] < ARR[J]
+SET TEMP[INDEX] = ARR[I]
+SET I=I+1
+ELSE
+SET TEMP[INDEX] = ARR[J]
+SETJ=J+1
+[END OF IF]
+SET INDEX = INDEX+1
+[END OF LOOP]
+Step 3: [Copy the remaining elements of right sub-array, if any]
+IF I > MID
+Repeat while J <= END
+SET TEMP[INDEX] = ARR[J]
+SET INDEX = INDEX+1, SETJ=J+1
+[END OF LOOP]
+[Copy the remaining elements of left sub-array, if any]
+ELSE
+Repeat whileI<= MID
+SET TEMP[INDEX] = ARR[I]
+SET INDEX = INDEX+1, SETI=I+1
+[END OF LOOP]
+[END OF IF]
+Step 4: [Copy the contents of TEMP back to ARR] SET K=
+Step 5: Repeat while K < INDEX
+SET ARR[K] = TEMP[K]
+SET K=K+1
+[END OF LOOP]
+Step 6: END
+
+MERGE_SORT(ARR, BEG, END)
+
+Step 1: IF BEG < END
+SET MID = (BEG + END)/2
+CALL MERGE_SORT (ARR, BEG, MID)
+CALL MERGE_SORT (ARR, MID+1, END)
+MERGE (ARR, BEG, MID, END)
+[END OF IF]
+Step 2: END

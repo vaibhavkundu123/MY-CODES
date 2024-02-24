@@ -1,0 +1,10 @@
+Step 1: Add a ")" at the end of the postfix expression
+Step 2: Scan every charecter of the postfix exporession and repeat Steps 3 and 4 until ")" is encountered
+Step 3: If an operand is encountered, push it on the stack
+If an operator 0 is encountered, then
+a. Pop the top two elements from the stack as A and B as A and B
+b. Evaluate B and A, where A is the topmost element below A
+c. Push the result of evaluation on the stack
+[END OF IF]
+Step 4: SET RESULT equal to the topmost element of the stack
+Step 5: EXIT

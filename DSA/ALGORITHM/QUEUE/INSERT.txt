@@ -1,0 +1,11 @@
+Step 1: IF REAR = MAX-1
+Write OVERFLOW
+Goto step 4
+[END OF IF]
+Step 2: IF FRONT=-1 and REAR=-1
+SET FRONT = REAR = 0
+ELSE
+SET REAR = REAR+1
+[END OF IF]
+Step 3: SET QUEUE[REAR] = NUM
+Step 4: EXIT

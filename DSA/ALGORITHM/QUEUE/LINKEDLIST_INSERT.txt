@@ -1,0 +1,12 @@
+Step 1: Allocate memory for the new node and name
+it as PTR
+Step 2: SET PTR -> DATA = VAL
+Step 3: IF FRONT = NULL
+SET FRONT = REAR = PTR
+SET FRONT -> NEXT = REAR -> NEXT = NULL
+ELSE
+SET REAR -> NEXT = PTR
+SET REAR = PTR
+SET REAR -> NEXT = NULL
+[END OF IF]
+Step 4: END

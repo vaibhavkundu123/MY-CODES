@@ -1,0 +1,11 @@
+Step 1: [INITIALIZE] SET PTR = HEAD
+Step 2: Repeat Step 3 while PTR != NULL
+Step 3: IF VAL = PTR -> DATA
+SET POS = PTR
+Go To Step 5
+ELSE
+SET PTR = PTR -> NEXT
+[END OF IF]
+[END OF LOOP]
+Step 4: SET POS = NULL
+Step 5: EXIT

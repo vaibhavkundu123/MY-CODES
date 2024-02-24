@@ -1,0 +1,9 @@
+Step 1: IF HEAD = NULL
+PRINT "UNDERFLOW"
+RETURN
+
+Step 2: SET TEMP = TAIL
+Step 3: TAIL = TEMP -> PREV
+Step 4: TAIL -> NEXT = NULL
+Step 5: FREE(TEMP)
+Step 6: EXIT

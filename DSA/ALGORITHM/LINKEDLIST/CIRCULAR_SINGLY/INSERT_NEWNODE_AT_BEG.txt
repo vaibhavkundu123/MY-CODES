@@ -1,0 +1,8 @@
+Step 1: PTR = (Struct NODE*)mallo(sizeof(struct NODE))
+Step 2: SET PTR -> DATA = INFO
+Step 3: SET PTR -> NEXT = PTR
+
+Step 4: PTR -> NEXT = HEAD
+Step 5: HEAD = PTR
+Step 6: TAIL -> NEXT = PTR
+Step 7: EXIT

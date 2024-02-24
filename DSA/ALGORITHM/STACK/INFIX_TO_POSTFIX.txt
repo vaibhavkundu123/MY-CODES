@@ -1,0 +1,21 @@
+Step 1: Add)to the end of the infix expression
+Step 2: Push(on to the stack
+Step 3: Repeat until each character in the infix notation is scanned
+IF a(is encountered, push it on the stack
+IF an operand (whether a digit or a character) is encountered, add it to the
+postfix expression.
+IF a)is encountered, then
+a. Repeatedly pop from stack and add it to the postfix expression until a
+( is encountered.
+b. Discard the ( . That is, remove the ( from stack and do not
+add it to the postfix expression
+IF an operator is encountered, then
+a. Repeatedly pop from stack and add each operator (popped from the stack) to the
+postfix expression which has the same precedence or a higher precedence than 0
+b. Push the operator to the stack
+[END OF IF]
+Step 4: Repeatedly pop from the stack and add it to the postfix expression until the stack is empty
+Step 5: EXIT
+
+
+

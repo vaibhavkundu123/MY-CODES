@@ -1,0 +1,17 @@
+Step 1: PTR = (Struct NODE *)malloc(sizeof(Struct NODE))
+Step 2: SET PTR -> DATA = NUM
+Step 3: SET PTR -> PREV = NULL
+Step 4: SET PTR -> NEXT = NULL
+Step 5: IF MEMORY IS FULL
+PRINT "UNDERFLOW"
+
+Step 6: SET TEMP = HEAD
+Step 7: SET I = 0
+Step 8: REPEAT STEP 9 AND 10 UNTIL I != POS - 1
+Step 9: TEMP = TEMP -> NEXT
+Step 10: I++
+Step 11: PTR -> NEXT = TEMP -> NEXT
+Step 12: TEMP -> NEXT = PTR
+Step 13: PTR -> PREV = TEMP
+Step 14: PTR -> NEXT -> PREV = PTR
+Step 15: EXIT

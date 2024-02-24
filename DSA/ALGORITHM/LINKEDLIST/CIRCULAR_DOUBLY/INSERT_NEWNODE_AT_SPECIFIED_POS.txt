@@ -1,0 +1,15 @@
+Step 1: PTR = (Struct NODE *)malloc(sizeof(Struct NODE))
+Step 2: SET PTR -> DATA = NUM
+Step 3: SET PTR -> PREV = PTR
+Step 4: SET PTR -> NEXT = PTR
+
+Step 5: SET TEMP = HEAD
+Step 6: SET I = 0
+Step 7: REPEAT STEP 9 AND 10 UNTIL I != POS - 1
+Step 8: TEMP = TEMP -> NEXT
+Step 9: I++
+Step 10: PTR -> NEXT = TEMP -> NEXT
+Step 11: TEMP -> NEXT = PTR
+Step 12: PTR -> PREV = TEMP
+Step 13: PTR -> NEXT -> PREV = PTR
+Step 14: EXIT

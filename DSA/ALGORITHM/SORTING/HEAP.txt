@@ -1,0 +1,12 @@
+HEAPSORT(ARR, N)
+
+Step 1: [Build Heap H]
+Repeat for I = 0 to N-1
+CALL Insert_Heap(ARR, N, ARR[I])
+[END OF LOOP]
+Step 2: (Repeatedly delete the root element)
+Repeat while N>0
+CALL Delete_Heap(ARR, N, VAL)
+SET N=N+1
+[END OF LOOP]
+Step 3: END

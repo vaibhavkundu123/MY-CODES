@@ -1,0 +1,6 @@
+Step 1: Repeat Steps 2 to 4 while TREE != NULL
+Step 2: INORDER(TREE -> LEFT)
+Step 3: Write TREE -> DATA
+Step 4: INORDER(TREE -> RIGHT)
+[END OF LOOP]
+Step 5: END

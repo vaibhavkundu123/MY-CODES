@@ -1,0 +1,18 @@
+Step 1: IF HEAD = TAIL
+PRINT "UNDERFLOW"
+
+
+
+Step 2: PTR = HEAD
+
+Step 3: REPEAT STEP 4 UNTIL PTR -> NEXT != TAIL
+
+Step 4: PTR = PTR -> NEXT
+
+Step 5: PTR -> NEXT = HEAD
+
+Step 6: FREE (TAIL)
+
+Step 7: TAIL = PTR
+
+Step 8: EXIT

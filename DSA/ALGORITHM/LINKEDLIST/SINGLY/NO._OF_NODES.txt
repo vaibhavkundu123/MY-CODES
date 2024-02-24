@@ -1,0 +1,8 @@
+Step 1: [INITIALIZE] SET COUNT = 1
+Step 2: [INITIALIZE] SET TEMP = HEAD
+Step 3: Repeat Steps 4 and 5 while TEMP -> NEXT != NULL
+Step 4: COUNT++
+Step 5: SET TEMP = TEMP -> NEXT
+[END OF LOOP]
+Step 6: Write COUNT
+Step 7: EXIT

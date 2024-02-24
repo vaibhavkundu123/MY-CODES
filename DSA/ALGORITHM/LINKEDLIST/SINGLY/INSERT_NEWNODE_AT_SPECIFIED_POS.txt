@@ -1,0 +1,13 @@
+Step 1: PTR = (Struct NODE*)malloc(sizeof(struct NODE))
+Step 2: SET PTR -> DATA = INFO
+Step 3: SET PTR -> NEXT = NULL
+
+Step 4: SET TEMP = HEAD
+Step 5: SET I = 0
+Step 6: Repeat Steps 7 and 8 while I = LOC - 1
+Step 7: TEMP = TEMP -> NEXT
+Step 8: I++
+[END OF LOOP]
+Step 9: PTR -> NEXT = TEMP -> NEXT
+Step 10: TEMP -> NEXT = PTR
+Step 11: EXIT
