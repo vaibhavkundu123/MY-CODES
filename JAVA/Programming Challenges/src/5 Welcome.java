@@ -5,6 +5,6 @@ class Welcome {
         System.out.print("Please enter your name: ");
         Scanner input = new Scanner(System.in);
         String name = input.nextLine();
-        System.out.println("Welcome " + name + " to KG Coding");
+        System.out.println("Welcome " + name + " to the world");
     }
 }

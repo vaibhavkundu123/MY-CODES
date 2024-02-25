@@ -9,9 +9,9 @@ class Swap {
         System.out.print("Enter value of B: ");
         int b = input.nextInt();
 
-        int c = a;
+        int temp = a;
         a = b;
-        b = c;
+        b = temp;
 
         System.out.println("Swapping done...");
         System.out.println("Value of A is:" + a);
