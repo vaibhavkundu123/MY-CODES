@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="58be9687-688c-4698-acea-23aef88802a9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/Lecture.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/BreakAndContinue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/DoWhile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/ForEachLoop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/ForLoop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/MathClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/Recursion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/StringFormat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/StringTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/Switch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/TernaryOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../7 Control Statements Math and String/Lecture/src/TestingFinal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lecture.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/gettersetter/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhav/DefaultTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhav/Packages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhav/getterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhavkundu/AccessTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhavkundu/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhavkundu/Default.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhavkundu/TwoWheeler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhavkundu/equals/EqualsAndHashCodeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhavkundu/equals/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhavkundu/inheritance/InheritanceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhavkundu/inheritance/MotorCycle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhavkundu/inheritance/Vehicle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/in/vaibhavkundu/nested/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../9 Abstraction and Polymorphism/Lecture/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../9 Abstraction and Polymorphism/Lecture/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../9 Abstraction and Polymorphism/Lecture/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../9 Abstraction and Polymorphism/Lecture/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../9 Abstraction and Polymorphism/Lecture/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../9 Abstraction and Polymorphism/Lecture/src/in/vaibhavkundu/abstraction/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../9 Abstraction and Polymorphism/Lecture/src/in/vaibhavkundu/abstraction/TestAbstraction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../9 Abstraction and Polymorphism/Lecture/src/in/vaibhavkundu/abstraction/Transport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../9 Abstraction and Polymorphism/Lecture/src/in/vaibhavkundu/abstraction/Vehicle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/53 MinimumTernary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/54 OddEvenTernary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/55 AbsoluteTernary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/56 StudentScoreTernary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/57 MonthSwitch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/58 CalculatorSwitch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/59 PasswordChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/60 NumberGuessingGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/61 MultiplicationTableFor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/62 PrimeFor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/63 MaxArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/64 OccurrencesForEach.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/65 ExitOnExit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/66 SumPositive.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/67 PrintEven.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/68 FibonacciRecursion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/69 PalindromeRecursion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/70 StudentToString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/71 StringManipulation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/72 Circle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/73 DiceRoll.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/74 GuessingGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/75 ArrayToString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/76 CarFinal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge77/geometry/Circle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge77/geometry/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge77/utils/Calculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge78/BankAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge78/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge79/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge79/TestEmployee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge80/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge80/DVD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge80/LibraryItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge80/Magazine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge82/ArrayOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge82/TestArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge83/Circle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge83/Shape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge83/Square.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge83/TestShape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge84/Bird.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge84/Eagle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge84/Flyable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programming Challenges/src/in/vaibhavkundu/Challenge84/TestFly.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6 Class and Object/Lecture/src/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../6 Class and Object/Lecture/src/Car.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2d5Tby0RLZkNKjxfpamqAe3kW35" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.EqualsAndHashCodeTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.InheritanceTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.getterTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/MY-CODES/JAVA&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="58be9687-688c-4698-acea-23aef88802a9" name="Changes" comment="" />
+      <created>1709297017135</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709297017135</updated>
+    </task>
+    <servers />
+  </component>
+</project>
