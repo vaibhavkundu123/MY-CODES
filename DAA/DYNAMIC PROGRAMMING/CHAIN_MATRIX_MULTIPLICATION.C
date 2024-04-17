@@ -22,7 +22,7 @@ int matrixChainOrder(int p[], int n) {
             }
         }
     }
-
+    
     return m[1][n - 1]; // Return the minimum number of scalar multiplications needed
 }
 
