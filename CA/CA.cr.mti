@@ -1,0 +1,169 @@
+D:/CA/4to1MUX.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/4to1MUX.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity mux1
+-- Compiling architecture arch1 of mux1
+
+} {} {}} D:/CA/ORGATE.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/ORGATE.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity or1
+-- Compiling architecture arch1 of or1
+
+} {} {}} D:/CA/NOTGATE.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/NOTGATE.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity not1
+-- Compiling architecture arch1 of not1
+
+} {} {}} D:/CA/RAM128x8.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/RAM128x8.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity ram
+-- Compiling architecture arch1 of ram
+
+} {} {}} D:/CA/3to8DecoderUsingTwo2to4Decoder.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/3to8DecoderUsingTwo2to4Decoder.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity decoder2
+-- Compiling architecture arch1 of decoder2
+
+} {} {}} D:/CA/4bitArithmeticUnit.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/4bitArithmeticUnit.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity au
+-- Compiling architecture arch1 of au
+
+} {} {}} D:/CA/RippleCarryAdder.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/RippleCarryAdder.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ra
+-- Compiling architecture arch1 of ra
+
+} {} {}} D:/CA/FAusingHA.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/FAusingHA.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity faha
+-- Compiling architecture arch1 of faha
+
+} {} {}} D:/CA/2to4Decoder.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/2to4Decoder.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity decoder1
+-- Compiling architecture arch1 of decoder1
+
+} {} {}} D:/CA/FA.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/FA.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity fa
+-- Compiling architecture arch1 of fa
+
+} {} {}} D:/CA/HA.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/HA.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ha
+-- Compiling architecture arch1 of ha
+
+} {} {}} D:/CA/4bitMultiplication.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/4bitMultiplication.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity multiplier_4bit
+-- Compiling architecture arch1 of multiplier_4bit
+
+} {} {}} D:/CA/4bitDecrementer.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/4bitDecrementer.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity decr
+-- Compiling architecture arch1 of decr
+
+} {} {}} D:/CA/XORGATE.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/XORGATE.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity xor1
+-- Compiling architecture arch1 of xor1
+
+} {} {}} D:/CA/ANDGATE.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/ANDGATE.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity and1
+-- Compiling architecture arch1 of and1
+
+} {} {}} D:/CA/4bitRestoringDivision.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/4bitRestoringDivision.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity restoring_division_4bit
+-- Compiling architecture arch1 of restoring_division_4bit
+
+} {} {}} D:/CA/1to4DMUX.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/1to4DMUX.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity dmux1
+-- Compiling architecture arch1 of dmux1
+
+} {} {}} D:/CA/4bitIncrementer.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/4bitIncrementer.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity incr
+-- Compiling architecture arch1 of incr
+
+} {} {}} D:/CA/FAusingBehavioural.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/FAusingBehavioural.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity fa1
+-- Compiling architecture arch1 of fa1
+
+} {} {}} D:/CA/4bitAdderSubtractorCompositeUnit.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/CA/4bitAdderSubtractorCompositeUnit.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity as
+-- Compiling architecture arch1 of as
+
+} {} {}}

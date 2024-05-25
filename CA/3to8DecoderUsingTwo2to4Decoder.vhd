@@ -1,0 +1,19 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity decoder2 is
+    Port ( en,a1,b1 : in std_logic;
+		z1 : out std_logic_vector(7 downto 0));
+end decoder2;
+
+architecture arch1 of decoder2 is
+component decoder1 is
+    Port ( enable,a,b : in std_logic;
+           z : out std_logic_vector(3 downto 0));
+end component;
+signal nen : std_logic;
+begin
+nen <= not en;
+x1: decoder1 port map(nen, a1, b1, z1(3 downto 0));
+x2: decoder1 port map(en, a1, b1, z1(7 downto 4)); 
+end arch1;

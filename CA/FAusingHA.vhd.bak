@@ -1,0 +1,18 @@
+library ieee;
+use ieee.std_logic_1164.all;
+entity fa is
+port( af,bf,cin:in std_logic;
+   sf,cout: out std_logic);
+end fa;
+
+architecture arch1 of fa is
+component ha is
+port( a,b:in std_logic;
+   s,c: out std_logic);
+end component;
+signal sig1,sig2,sig3: std_logic; 
+begin
+x1: ha port map(af,bf,sig1,sig2);
+x2: ha port map(sig1,cin,sf,sig3);
+cout<=sig3 or sig2;
+end arch1;
