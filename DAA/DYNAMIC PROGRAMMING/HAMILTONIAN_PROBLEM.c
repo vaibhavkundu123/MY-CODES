@@ -28,9 +28,8 @@ void hamPathUtil(bool graph[V][V], int path[], int pos, int n, bool *found) {
         return;
     }
 
-    // Try different vertices as the next candidate in Hamiltonian Path.
-    // We don't try for 0 as we included 0 as starting point in the Hamiltonian Path
-    for (int v = 1; v < n; v++) {
+        // Try different vertices as the next candidate in Hamiltonian Path
+    for (int v = 0; v < n; v++) {
         if (isSafe(v, graph, path, pos, n)) {
             path[pos] = v;
 
@@ -46,14 +45,19 @@ void hamPathUtil(bool graph[V][V], int path[], int pos, int n, bool *found) {
 /* This function solves the Hamiltonian Path problem using backtracking. It mainly uses hamPathUtil() to solve the problem. It returns false if there is no Hamiltonian Path possible, otherwise, it returns true and prints the path. */
 void hamPath(bool graph[V][V], int n) {
     int path[V];
-    for (int i = 0; i < n; i++)
-        path[i] = -1;
-
-    // Let's put vertex 0 as the first vertex in the path.
-    path[0] = 0;
-
     bool found = false;
-    hamPathUtil(graph, path, 1, n, &found);
+
+    // Iterate over all vertices to start the Hamiltonian Path
+    for (int start = 0; start < n; start++) {
+        for (int i = 0; i < n; i++)
+            path[i] = -1;
+
+        // Start the path with the current vertex
+        path[0] = start;
+
+        hamPathUtil(graph, path, 1, n, &found);
+    }
+
     if (!found) {
         printf("\nNo solution exists\n");
     }

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 
 #define N 8 // You can change N to solve for different board sizes
 
