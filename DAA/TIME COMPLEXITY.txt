@@ -1,0 +1,18 @@
+Fractional_Knapsack -> O(nlogn)
+Prim's -> O(log|V|(|V| + |E|))
+Dijkstra -> O(log|V|(|V| + |E|))
+Kruskal -> O(|E|(log|E| + log|V|))
+Huffman_Code -> O(nlogn)
+Job_Sequencing -> O(n^2)
+Bellman_Ford -> O(|E||V|)
+
+O-1_Knapsack -> O(nU)
+Subset_Sum -> O(nS)
+Matrix_Chain -> O(n^3)
+Floyd_Warshall -> O(n^3)
+Longest_Common_Subsequence -> O(n*m)
+
+Floyd_Fulkerson -> O(EF)
+
+N_Queen -> O(n!)
+Graph_Coloring -> O(mn^n)
