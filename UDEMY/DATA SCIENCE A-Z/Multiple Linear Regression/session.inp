@@ -1,0 +1,16 @@
+# Log started 2024-06-02 16:47
+# Record of session commands.  Please note that this will
+# likely require editing if it is to be run as a script.
+open \
+  "E:\MY-CODES\UDEMY\DATA SCIENCE A-Z\Multiple Linear Regression\P12-50-Startups.csv"
+dummify State
+rename 6 NewYork
+rename 7 California
+# model 1
+ols Profit 0 RDSpend Administration MarketingSpend NewYork
+# model 2
+ols Profit 0 RDSpend MarketingSpend NewYork
+# model 3
+ols Profit 0 RDSpend MarketingSpend
+# model 4
+ols Profit 0 RDSpend

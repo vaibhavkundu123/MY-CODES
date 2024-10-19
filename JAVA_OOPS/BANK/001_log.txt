@@ -1,0 +1,15 @@
+Account Created on: 2024-09-19 01:23:52
+Initial Deposit: 10.0
+
+Current Balance: 10.0
+Account Accessed on: 2024-09-19 01:24:15
+
+Current Balance: 20.0
+Deposit of 10.0 on: 2024-09-19 01:28:06
+
+Current Balance: 120.0
+Deposit of 100.0 on: 2024-09-19 01:28:30
+
+Current Balance: 100.0
+Withdrawal of 20.0 on: 2024-09-19 01:28:46
+

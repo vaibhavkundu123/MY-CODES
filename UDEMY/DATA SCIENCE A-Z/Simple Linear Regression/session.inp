@@ -1,0 +1,10 @@
+# Log started 2024-06-01 18:18
+# Record of session commands.  Please note that this will
+# likely require editing if it is to be run as a script.
+open \
+  "E:\MY-CODES\UDEMY\DATA SCIENCE A-Z\Simple Linear Regression\P12-SalaryData.csv"
+summary YearsExperience
+summary YearsExperience Salary
+# model 1
+ols Salary 0 YearsExperience
+fcast 1 30

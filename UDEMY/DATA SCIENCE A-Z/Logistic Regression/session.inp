@@ -1,0 +1,19 @@
+# Log started 2024-06-02 17:31
+# Record of session commands.  Please note that this will
+# likely require editing if it is to be run as a script.
+open \
+  "E:\MY-CODES\UDEMY\DATA SCIENCE A-Z\Logistic Regression\P12-Email-Offer.csv"
+gnuplot  TookAction Age
+dummify Gender
+rename 4 Female
+rename 5 Male
+# model 1
+logit TookAction 0 Age --p-values
+# model 2
+logit TookAction 0 Age Male --p-values
+fcast 1 100
+# model 2
+fcast 1 100 TookAction_hat
+delete TookAction_hat
+# model 3
+logit TookAction 0 Age Female --p-values
