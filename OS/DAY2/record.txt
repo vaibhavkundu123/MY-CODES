@@ -1,0 +1,9 @@
+Roll Name Dept Gender
+12 Amit Das CSE M
+20 Paramita Sen cse F
+14 Soumya Paul CSE M
+11 Bidisha Nandy CSE F
+15 Soumik Dey it M
+13 Ajit kumar CSE M
+21 Satyam Kumar IT M
+15 Ipshita Das ECE F
