@@ -1,0 +1,188 @@
+//Passing Lambda Expressions as Arguments
+
+interface StringFunc {
+	String func(String n);
+}
+class LambdasAsArgumentsDemo {
+	static String stringOp(StringFunc sf, String s) {
+		return sf.func(s);
+	}
+	public static void main(String args[])
+	{
+		String inStr = "Lambdas add power to Java";
+		String outStr;
+		System.out.println("Here is input string: " + inStr);
+
+		outStr = stringOp((str) -> str.toUpperCase(), inStr);
+		System.out.println("The string in uppercase: " + outStr);
+
+		
+		outStr= stringOp((str) -> {
+			String result = "";
+			int i;
+			for(i = str.length()-1; i >= 0; i--)
+			result += str.charAt(i);
+			return result;
+		},inStr);
+
+		System.out.println("Original string: " + inStr);
+		System.out.println("String reversed: " + outStr);
+	}
+}
+-----------------------------------------------------------------------------
+//Method References(Static)
+
+interface StringFunc {
+	String func(String n);
+}
+
+class MyStringOps {
+	static String strReverse(String str) {
+		String result = "";
+		int i;
+		for(i = str.length()-1; i >= 0; i--)
+			result += str.charAt(i);
+		return result;
+	}
+class MethodRefDemo {
+	static String stringOp(StringFunc sf, String s) {
+		return sf.func(s);
+	}
+	public static void main(String args[])
+	{
+		String inStr = "Lambdas add power to Java";
+		String outStr;
+		
+		outStr = stringOp(MyStringOps::strReverse, inStr);// Here, a method reference to strReverse is passed to stringOp().
+		System.out.println("Original string: " + inStr);
+		System.out.println("String reversed: " + outStr);
+	}
+}
+---------------------------------------------------------------------------------------
+//Method References(Non-Static)
+
+interface StringFunc {
+	String func(String n);
+}
+
+class MyStringOps {
+	String strReverse(String str) {
+		String result = "";
+		int i;
+		for(i = str.length()-1; i >= 0; i--)
+			result += str.charAt(i);
+		return result;
+	}
+class MethodRefDemo {
+	static String stringOp(StringFunc sf, String s) {
+		return sf.func(s);
+	}
+	public static void main(String args[])
+	{
+		String inStr = "Lambdas add power to Java";
+		String outStr;
+		MyStringOps strOps = new MyStringOps( );
+		
+		outStr = stringOp(strOps::strReverse, inStr);// Here, a method reference to strReverse is passed to stringOp().
+		System.out.println("Original string: " + inStr);
+		System.out.println("String reversed: " + outStr);
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+interface MyFunc<T> {
+	boolean func(T v1, T v2);
+}
+
+class HighTemp {
+	private int hTemp;
+	HighTemp(int ht) { hTemp = ht; }
+
+	boolean sameTemp(HighTemp ht2) {
+		return hTemp == ht2.hTemp;
+	}
+
+	boolean lessThanTemp(HighTemp ht2) {
+		return hTemp < ht2.hTemp;
+	}
+}
+class InstanceMethWithObjectRefDemo {
+
+	static <T> int counter(T[] vals, MyFunc<T> f, T v) {
+		int count = 0;
+		for(int i=0; i < vals.length; i++)
+			if(f.func(vals[i], v)) 
+				count++;
+		return count;
+	}
+
+	public static void main(String args[])
+	{
+		int count;
+		HighTemp[] weekDayHighs = { new HighTemp(89), new HighTemp(82), new HighTemp(90), new HighTemp(89), new HighTemp(89)};
+
+		count = counter(weekDayHighs, HighTemp::sameTemp,new HighTemp(89));
+		System.out.println(count + " days had a high of 89");
+
+		HighTemp[] weekDayHighs2 = { new HighTemp(32), new HighTemp(12),new HighTemp(24), new HighTemp(19),new HighTemp(18)};
+		count = counter(weekDayHighs2, HighTemp::sameTemp,new HighTemp(12));
+		System.out.println(count + " days had a high of 12");
+
+	}
+}
+
+--------------------------------------------------------------------------------------------------------
+//Method References(Generic)
+interface MyFunc<T> {
+	int func(T[] vals, T v);
+}
+class MyArrayOps {
+	static <T> int countMatching(T[] vals, T v) {
+		int count = 0;
+		for(int i=0; i < vals.length; i++)
+			if(vals[i] == v) count++;
+		return count;
+	}
+}
+class GenericMethodRefDemo {
+	static <T> int myOp(MyFunc<T> f, T[] vals, T v) {
+		return f.func(vals, v);
+	}
+	public static void main(String args[])
+	{
+		Integer[] vals = { 1, 2, 3, 4, 2, 3, 4, 4, 5 };
+		String[] strs = { "One", "Two", "Three", "Two" };
+		int count;
+		count = myOp(MyArrayOps::<Integer>countMatching, vals, 4);
+		System.out.println("vals contains " + count + " 4s");
+		count = myOp(MyArrayOps::<String>countMatching, strs, "Two");
+		System.out.println("strs contains " + count + " Twos");
+	}
+}
+-----------------------------------------------------------------------------------------------------------
+
+//Constructor References
+
+interface MyFunc {
+	MyClass func(int n);
+}
+class MyClass {
+	private int val;
+	MyClass(int v) { val = v; }
+	MyClass() { val = 0; }
+	int getVal() { return val; };
+}
+
+
+class ConstructorRefDemo {
+	public static void main(String args[])
+	{
+
+		MyFunc myClassCons = MyClass::new;
+		MyClass mc = myClassCons.func(100);
+		// Use the instance of MyClass just created.
+		System.out.println("val in mc is " + mc.getVal( ));
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------

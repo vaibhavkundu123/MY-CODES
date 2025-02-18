@@ -1,0 +1,159 @@
+
+/*
+	public,default,private (Method,Instance variable,Class)
+	static final(Instance Variable,Method,Class)
+	Nested Class
+		Non Static Inner Class
+			Inner Class
+			Method Local Inner Class
+			Anonymous class 
+		Static Inner Class	
+
+*/
+------------------------------------------------------------------------------------------------------
+//Inner class.................
+
+class Sample_Outer{						
+	int i;
+	class Sample_Inner{
+		void display(){
+			System.out.println("Inner Class"+i);
+		}
+	}
+	
+	void show()
+	{
+		Sample_Inner ob= new Sample_Inner();
+		ob.display();
+	}
+}
+
+/*driver Class */
+public class NestedClass_Main {
+	public static void main(String[] args) {
+		Sample_Outer o = new Sample_Outer();
+		o.i=2;
+		o.show();
+		
+		Sample_Outer.Sample_Inner innerObject = o.new Sample_Inner();
+		innerObject.display();
+	}
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+//Method local inner class...........................
+
+class Sample_Outer1{				
+	void show()
+	{
+		class Sample_Inner1{
+			void display()
+                        {
+				System.out.println("Inner Class");
+			}
+	         }
+	Sample_Inner1 ob= new Sample_Inner1();
+	ob.display();
+        }
+         
+}
+
+/*driver Class */
+public class NestedClass_Main {
+	public static void main(String[] args) {
+		Sample_Outer1 o = new Sample_Outer1();
+		o.show();
+	}
+}
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+////Static inner class.............................................
+
+class Sample_Outer2                                      
+{
+	static int i;
+	static class Sample_Inner2{
+		static void display1()
+                {
+			System.out.println("Staic Inner Class Static Method"+i);
+		}
+		void display()
+		{
+			System.out.println("Staic Inner Class"+i);
+		}	
+	}
+	void show(){
+		Sample_Inner2 o = new Sample_Inner2();
+		o.display();
+		Sample_Inner2.display1();
+	}
+	
+}
+
+
+/*driver Class */
+public class NestedClass_Main {
+	public static void main(String[] args) {
+		Sample_Outer2 o = new Sample_Outer2();
+		o.show();
+
+		Sample_Outer2.Sample_Inner2 ob= new Sample_Outer2.Sample_Inner2();
+		ob.display();
+		Sample_Outer2.Sample_Inner2.display1();
+	}
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+Difference between Normal inner class and Static nested class in Java
+
+The difference between normal inner class and static nested class is as follows:
+
+1. In the case of a normal or regular inner class, without an existing outer class object, 
+   there is no chance of existing inner class object
+   whereas, in the case of a static nested class, without an existing outer class object, 
+   there may be a chance of existing nested class object.
+
+2. An inner class object is strongly associated with an outer class object whereas,
+   a static nested class is not strongly associated with an outer class object.
+
+3. In normal inner class, we cannot declare any static members but in the static nested class, 
+   we can declare a static member including the main method.
+
+4. Since we cannot declare the main method in the normal inner class, 
+   therefore, we cannot run inner class directly from the command prompt.
+   But we can declare the main method and can also run the static nested class directly 
+   from the command prompt.
+
+5. A normal inner class can access both static and non-static members of the outer class directly 
+    but from the static nested class, we can access only static members.
+
+
+public class Test {
+    static public class A {
+        public static void main(String[] args) {
+            System.out.println("hi");
+        }
+    }
+}
+java test.Test$A
+
+
+
+
+
+Key points:
+
+1. A class declared inside another class is known as nested classes in java.
+
+2. There are two types of nested classes available in Java: static and non-static.
+
+3. The member class declared with a static modifier is known as static nested class.
+
+4. The non-static member class is known as inner class or non-static nested class.
+
+5. A static nested class is not an inner class in java because it is considered as top-level class.
+
+6. It can be declared public, protected, package-level, or private to restrict its accessibility.
+
+7. An instance of a static nested class is created the same way as you create an instance of a top-level class using the new keyword.

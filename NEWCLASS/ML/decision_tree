@@ -1,0 +1,27 @@
+digraph {
+	0 [label="Feature 0
+Threshold Overcast
+Gain 0.2516"]
+	0 -> 1 [label="<= Threshold"]
+	0 -> 2 [label="> Threshold"]
+	1 [label="Leaf: Yes"]
+	2 [label="Feature 1
+Threshold Hot
+Gain 0.1887"]
+	2 -> 5 [label="<= Threshold"]
+	2 -> 6 [label="> Threshold"]
+	5 [label="Feature 0
+Threshold Rain
+Gain 0.3113"]
+	5 -> 11 [label="<= Threshold"]
+	5 -> 12 [label="> Threshold"]
+	11 [label="Leaf: Yes"]
+	12 [label="Leaf: No"]
+	6 [label="Feature 2
+Threshold High
+Gain 0.3113"]
+	6 -> 13 [label="<= Threshold"]
+	6 -> 14 [label="> Threshold"]
+	13 [label="Leaf: No"]
+	14 [label="Leaf: Yes"]
+}

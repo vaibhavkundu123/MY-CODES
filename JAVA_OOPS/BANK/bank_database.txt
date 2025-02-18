@@ -1,2 +1,0 @@
-001,Vaibhav Kundu,100.0
-002,Subrata Roy,5500.0
