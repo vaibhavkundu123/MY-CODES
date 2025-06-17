@@ -1,0 +1,23 @@
+Arithmetic Operator
+Allias
+Logical operator  <>(Not)
+Relation operator (>,<,=)
+order by,order by desc
+IN/NOT IN
+Between
+pattern matching
+
+Dual(dummy table)
+
+Aggregate/group Funtion
+sum(),avg(),min(),max(),count()
+
+Numeric Function
+https://www.w3resource.com/oracle/oracle-numeric-functions/index.php
+
+String Function
+https://www.oracletutorial.com/oracle-string-functions/
+
+DATE Function
+https://www.oracletutorial.com/oracle-date-functions/
+

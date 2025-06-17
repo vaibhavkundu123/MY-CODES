@@ -1,0 +1,304 @@
+CASE Statement
+	The Oracle/PLSQL CASE statement has the functionality of an IF-THEN-ELSE statement. 
+	you can use the CASE statement within a SQL statement.
+
+CASE [ expression ]
+
+   WHEN condition_1 THEN result_1
+   WHEN condition_2 THEN result_2
+   ...
+   WHEN condition_n THEN result_n
+
+   ELSE result
+
+END
+
+SELECT supplier_id,
+CASE
+  WHEN supplier_name = 'IBM' and supplier_type = 'Hardware' THEN 'North office'
+  WHEN supplier_name = 'IBM' and supplier_type = 'Software' THEN 'South office'
+END
+FROM suppliers;
+
+------------------------------------------------------------------------------------------------------------------
+
+Window functions apply to aggregate and ranking functions over a particular window (set of rows). 
+OVER clause is used with window functions to define that window. OVER clause does two things : 
+
+  Partitions rows to form a set of rows. (PARTITION BY clause is used) 
+  Orders rows within those partitions into a particular order. (ORDER BY clause is used) 
+
+create table Emp(
+EName varchar2(10),
+Age number(3),
+Department varchar2(10),
+Salary number(10,2));
+
+
+
+insert into Emp values('Deep',25,'Sales',30000);
+insert into Emp values('Ajoy',27,'Finanance',50000);
+insert into Emp values('Syamal',28,'Sales',40000);
+insert into Emp values('Anirban',25,'IT',20000);
+insert into Emp values('Jyoti',26,'Sales',55000);
+insert into Emp values('Souvik',25,'Finanance',30000);
+insert into Emp values('Palash',24,'Sales',20000);
+insert into Emp values('Sumon',28,'IT',52000);
+insert into Emp values('Mainak',26,'Sales',30000);
+insert into Emp values('Rahul',29,'Finanance',40000);
+insert into Emp values('Sayan',25,'IT',20000);
+insert into Emp values('Sujoy',29,'Finanance',35000);
+
+
+select Ename,max(salary) from emp;
+** Error not a single-group group function
+
+
+-- Display the name with max_salary of a Table.
+select Ename,max(salary) over() from emp;
+
+
+--Find average salary of employees for each department along with Name,department.
+select Ename,DEPARTMENT,avg(salary) over(PARTITION BY Department) from emp;
+
+-- Find the average salary of employees for each department order by department and age
+SELECT Ename, Age, Department, Salary, AVG(Salary) OVER( PARTITION BY Department) AS Avg_Salary FROM emp order by Department,Age;
+
+
+--Find average salary of employees for each department add and order employees within a department by age. (*add department after that avg change one by one)
+SELECT Ename, Age, Department, Salary, AVG(Salary) OVER( PARTITION BY Department ORDER BY Age) AS Avg_Salary FROM emp;
+
+
+Ranking Window Functions : 
+Ranking functions are, RANK(), DENSE_RANK(), ROW_NUMBER() 
+
+RANK()   
+As the name suggests, the rank function assigns rank to all the rows within every partition. 
+Rank is assigned such that rank 1 given to the first row and rows having same value are assigned same rank. For the next rank after two same rank values, 
+one rank value will be skipped. 
+ 
+
+DENSE_RANK()   
+It assigns rank to each row within partition. Just like rank function first row is assigned rank 1 and rows having same value have same rank. 
+The difference between RANK() and DENSE_RANK() is that in DENSE_RANK(), for the next rank after two same rank, consecutive integer is used, no rank is skipped. 
+ 
+
+ROW_NUMBER()   
+It assigns consecutive integers to all the rows within partition. Within a partition, no two rows can have same row number.
+
+
+Fetch first two higest salary of Each Dept;
+select * from (SELECT emp.*, ROW_NUMBER() OVER (PARTITION BY Department ORDER BY Salary DESC) AS emp_row_no from emp)T where T.emp_row_no<=2;
+
+
+SELECT    
+       Ename,      
+       Department, 
+       Salary,
+       ROW_NUMBER() OVER (PARTITION BY Department ORDER BY Salary DESC) AS emp_row_no,
+       RANK() OVER(PARTITION BY Department ORDER BY Salary DESC) AS emp_rank,
+       DENSE_RANK() OVER(PARTITION BY Department ORDER BY Salary DESC) AS emp_dense_rank
+
+FROM 
+emp; 
+
+
+ENAME	DEPARTMENT	SALARY	EMP_ROW_NO	EMP_RANK	EMP_DENSE_RANK
+Ajoy	Finanance	50000	1		1		1
+Rahul	Finanance	40000	2		2		2
+Sujoy	Finanance	35000	3		3		3
+Souvik	Finanance	30000	4		4		4
+Sumon	IT		52000	1		1		1
+Sayan	IT		20000	2		2		2
+Anirban	IT		20000	3		2		2
+Jyoti	Sales		55000	1		1		1
+Syamal	Sales		40000	2		2		2
+Mainak	Sales		30000	3		3		3
+Deep	Sales		30000	4		3		3
+Palash	Sales		20000	5		5		4  ****** rank() value will be skipped , dense rank consecutive integer is used, no rank is skipped.
+
+
+
+LAG(),Lead()-
+IT is an analytic function that allows you to access the row at a given offset prior to the current row without using a self-join.
+It returns values from a previous row in the table. 
+To return a value from the next row, try using the LEAD function.
+
+
+LAG(expression [, offset ] [, default ])
+LEAD(expression [, offset ] [, default ])
+
+
+
+expression
+is a scalar expression evaluated against the value of the row at a given offset prior to the current row.
+
+offset
+is the number of rows that you want to backward from the current row. The default is 1.
+
+default
+If the offset goes beyond the scope of the partition, the function returns the default. If you omit default, then the function returns NULL.
+
+
+SELECT  emp.*,
+
+	lag(salary,1,0) OVER(PARTITION BY Department ORDER BY Age) AS Fetch_prev_Salary,
+       
+	lead(salary,1,0) OVER(PARTITION BY Department ORDER BY Age) AS Fetch_next_Salary
+
+FROM emp; 
+
+
+ENAME	AGE	DEPARTMENT	SALARY	FETCH_PREV_SALARY	FETCH_NEXT_SALARY
+Souvik	25	Finanance	30000		0		50000
+Ajoy	27	Finanance	50000		30000		40000
+Rahul	29	Finanance	40000		50000		35000
+Sujoy	29	Finanance	35000		40000		0
+Sayan	25	IT		20000		0		20000
+Anirban	25	IT		20000		20000		52000
+Sumon	28	IT		52000		20000		0
+Palash	24	Sales		20000		0		30000
+Deep	25	Sales		30000		20000		30000
+Mainak	26	Sales		30000		30000		55000
+Jyoti	26	Sales		55000		30000		40000
+Syamal	28	Sales		40000		55000		0
+
+
+--fetch a query display if the salary of employee is higher,lower or equal to the previous employee.
+
+
+SELECT emp.*,lag(salary,1,0) OVER(PARTITION BY Department ORDER BY Age) AS Fetch_prev_Salary,	
+ case    
+   when emp.salary = lag(salary,1,0) OVER(PARTITION BY Department ORDER BY Age) then 'Equal to previous Salary'
+   when emp.salary > lag(salary,1,0) OVER(PARTITION BY Department ORDER BY Age) then 'Higher to previous Salary'
+   when emp.salary < lag(salary,1,0) OVER(PARTITION BY Department ORDER BY Age) then 'lower to previous Salary'
+ end Compare
+FROM emp; 
+
+
+ENAME	AGE	DEPARTMENT	SALARY	FETCH_PREV_SALARY	COMPARE
+Souvik	25	Finanance	30000	0			Higher to previous Salary
+Ajoy	27	Finanance	50000	30000			Higher to previous Salary
+Rahul	29	Finanance	40000	50000			lower to previous Salary
+Sujoy	29	Finanance	35000	40000			lower to previous Salary
+Sayan	25	IT		20000	0			Higher to previous Salary
+Anirban	25	IT		20000	20000			Equal to previous Salary
+Sumon	28	IT		52000	20000			Higher to previous Salary
+Palash	24	Sales		20000	0			Higher to previous Salary
+Deep	25	Sales		30000	20000			Higher to previous Salary
+Mainak	26	Sales		30000	30000			Equal to previous Salary
+Jyoti	26	Sales		55000	30000			Higher to previous Salary
+Syamal	28	Sales		40000	55000			lower to previous Salary
+
+
+
+FIRST_VALUE and LAST_VALUE Function
+
+The Oracle/PLSQL FIRST_VALUE function returns the first value in an ordered set of values from an analytic window. 
+It is similar to the LAST_VALUE and NTH_VALUE functions.
+
+
+--fetch first value of each  Department
+
+SELECT DISTINCT FIRST_VALUE(salary)
+ OVER (PARTITION BY Department) AS "First_Salary" 
+FROM emp;
+
+
+--fetch last value of each  Department
+
+SELECT DISTINCT LAST_VALUE(salary)
+ OVER (PARTITION BY Department) AS "Last_Salary" 
+FROM emp;
+
+-------------------------------------------------------------------------------------------------------------
+Pivot
+
+In SQL, Pivot is relational operators that are used to transform one table into another in order to achieve more simpler view of table. 
+Conventionally we can say that Pivot operator converts the rows data of the table into the column data. 
+
+
+SELECT * FROM
+(
+  SELECT column1, column2
+  FROM tables
+  WHERE conditions
+)
+PIVOT 
+(
+  aggregate_function(column2)
+  FOR column2
+  IN ( expr1, expr2, ... expr_n) | subquery
+)
+ORDER BY expression [ ASC | DESC ];
+
+
+CREATE TABLE orders
+( order_id integer NOT NULL,
+  customer_ref varchar2(50) NOT NULL,
+  order_date date,
+  product_id integer,
+  quantity integer,
+  CONSTRAINT orders_pk PRIMARY KEY (order_id)
+);
+
+order_id	customer_ref	product_id
+50001		SMITH		10
+50002		SMITH		20
+50003		ANDERSON	30
+50004		ANDERSON	40
+50005		JONES		10
+50006		JONES		20
+50007		SMITH		20
+50008		SMITH		10
+50009		SMITH		20
+
+
+Now, let's create our cross-tabulation query using the following PIVOT clause:
+
+SELECT * FROM
+(
+  SELECT customer_ref, product_id
+  FROM orders
+)
+PIVOT
+(
+  COUNT(product_id)
+  FOR product_id IN (10, 20, 30)
+)
+ORDER BY customer_ref;
+
+
+In this example, the PIVOT clause would return the following results:
+
+customer_ref	10	20	30
+ANDERSON	0	0	1
+JONES		1	1	0
+SMITH		2	3	0
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+REGEXP_LIKE
+
+https://www.techonthenet.com/oracle/regexp_like.php
+https://docs.oracle.com/cd/B13789_01/server.101/b10759/conditions018.htm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

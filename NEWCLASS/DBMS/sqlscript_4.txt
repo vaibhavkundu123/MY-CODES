@@ -1,0 +1,107 @@
+Student			Id is a primary key
+			Dept_no is forign key		
+Name       Id  Dept_no	
+Bipasha     1    d1
+Aindrila    2    d2
+Pratik      3    d3
+Nill        4    d2
+Syam        5    -
+
+Dept			Dept_no is a primary key	
+
+Dept_no   Dept_Name
+d1	   CSE         
+d2	   ECE
+d3	   IT
+d4	   CE
+
+
+
+Equi Join
+-----------------------
+
+select * from Student,Dept where Student.Dept_no=Dept.Dept_no;
+
+
+Name        Id  Dept_no	Dept_no	Dept_Name
+Bipasha     1    d1       d1      CSE
+Aindrila    2    d2       d2      ECE
+Pratik      3    d3       d3      IT
+Nill        4    d2       d2      ECE
+
+select Name, ID ,Student.Dept_no, Dept_Name from student,Dept where Student.Dept_no=Dept.Dept_no;
+
+Name        Id  Dept_no	 Dept_Name
+Bipasha     1    d1        CSE
+Aindrila    2    d2        ECE
+Pratik      3    d3        IT
+Nill        4    d2        ECE
+
+1.Find the name of Students who belongs to ECE dept.
+
+select Name from student where Dept_no in (select Dept_no from Dept where Dept_Name='ECE');//SubQuery
+select Name from student,Dept where Student.Dept_no=Dept.Dept_no and Dept.Dept_Name='ECE' ;//Equi Join
+
+2.Find the name,dept name of Students who belongs to ECE dept.
+
+//Initally Can not apply only SubQuery because we need to select attribute from both the table
+select Name,Dept_Name from student,Dept where Student.Dept_no=Dept.Dept_no and Dept.Dept_Name='ECE' ;//EquiJoin
+
+***
+select Name,T.dname from Student,(select dept_no,dname from Dept where Dname = 'ECE') T 
+    where T.dept_no = Student.dept_no
+***
+
+***
+select name, (select dept_name from dept1 where dept_name = 'ECE') from student1 where dept_no in (select dept_no from dept1 where dept_name = 'ECE');
+***
+
+3.Find the name of department where Bipasha Studied.
+
+select Dept_Name from Dept where Dept_no in(select Dept_no from student where Name = 'Bipasha');//SubQuery
+select Dept_Name from Dept,Student where Dept.Dept_no=Student.Dept_no and Student.Name ='Bipasha';//InnerJoin
+
+
+4.Find the name of department,Id of Student where Bipasha Studied.
+
+select Dept_Name,Id from Dept,Student where Dept.Dept_no=Student.Dept_no and Student.Name like 'Bipasha';//InnerJoin
+
+
+***
+select dname,T.ID from dept,(select ID, dept_no from Student where name = 'Bipasha') T 
+   where T.dept_no = dept.dept_no
+***
+
+***
+select dept_name, (select name from student1 where name = 'Bipasha') s_name from dept1 where dept_no in (select dept_no from student1 where name = 'Bipasha');
+***
+
+Group By
+1. count the number of student for each dept_no
+
+	select dept_no,count(*) "No_of_Student" from Student where DEPT_NO is NOT NULL group by dept_no ; 
+
+        dept_no No_of_Student 
+         d1        1
+	 d2        2
+	 d3        1
+
+
+2. count the number of student for each dept_no where Student must be greater than one. 
+
+	select dept_no,count(*) "No_of_Student" from Student where DEPT_NO is NOT NULL group by dept_no having count(*)>1;
+             
+        dept_no No_of_Student
+	  d2        2
+
+
+3. count the number of student for each dept_no display with dept name
+
+         select dname,count(*) "No of Student" from Student,Dept where Student.Dept_no = Dept.Dept_no group by dname
+
+         select dname,T.NoS from dept,(select dept_no,count(*) Nos from Student where DEPT_NO is NOT NULL group by dept_no )T  
+	where dept.dept_no=T.dept_no 
+
+
+
+

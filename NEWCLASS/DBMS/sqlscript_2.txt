@@ -1,0 +1,348 @@
+--Primary key Constraint (column level, Table level)
+
+--Column Level
+
+create table Dept( D_no number(2) primary key, D_name varchar2 (15));
+drop table Dept
+
+create table Emp( 
+Eno char(2) primary key, 
+Ename char(20));
+
+insert into  Emp values('E1','Aindrila');
+
+select * from USER_CONSTRAINTS where table_name = 'EMP';
+
+drop table Emp
+
+
+---****
+create table Emp( 
+Eno char(2) primary key, 
+Ename char(20) 
+ph_no number(10) primary key);
+
+
+
+--Table Level
+
+create table Emp( 
+Eno char(2), 
+Ename char(20), 
+ph_no number(10), 
+primary key(Eno,ph_no));
+
+drop table Emp
+
+
+---------column level (Mentioned constraint Name)
+
+create table Emp( 
+Eno char(2) constraint Emp_Primary primary key, 
+Ename char(20));
+
+insert into  Emp values('E1','Aindrila');
+insert into  Emp values('E1','Bipasha');
+
+select * from USER_CONSTRAINTS where table_name = 'EMP';
+
+drop table Emp
+
+
+
+
+---------table level (Mentioned constraint Name)
+
+create table Emp( 
+Eno char(2), 
+Ename char(20), 
+constraint Emp_Primary primary key(Eno) 
+);
+
+insert into  Emp values('E1','Aindrila');
+
+select * from USER_CONSTRAINTS where table_name = 'EMP';
+
+drop table Emp
+
+
+-----------Add constraint with alter
+
+create table Emp( 
+Eno char(2), 
+Ename char(20));
+
+Alter table Emp add CONSTRAINTS Emp_Primary primary key(Eno);
+
+insert into  Emp values('E1','Aindrila');
+insert into  Emp values('E1','Bipasha');
+
+drop table Emp
+
+
+
+-----------Drop constraint with alter
+
+create table Emp( 
+Eno char(2), 
+Ename char(20), 
+CONSTRAINTS Emp_Primary primary key(Ename));
+
+insert into  Emp values('E1','Aindrila');
+insert into  Emp values('E1','Bipasha');
+
+Alter table  Emp drop constraint Emp_Primary;
+
+drop table Emp
+
+
+
+
+
+--NOT NULL,NULL Constraint
+
+create table Emp( 
+Eno char(2), 
+Ename char(20) not null, 
+CONSTRAINTS Emp_Primary primary key(Eno));
+
+insert into  Emp values('E1','Aindrila');
+insert into  Emp values('E2','');
+
+drop table Emp
+
+
+
+
+--CHECK Constraint
+
+create table Emp( 
+Eno char(2), 
+Ename char(20) not null, 
+Emp_sal number(10,2) CONSTRAINTS Check_Sal check (Emp_sal>1000), 
+CONSTRAINTS Emp_Primary primary key(Eno));
+
+insert into  Emp values('E1','Aindrila',2000);
+insert into  Emp values('E2','Bipasha',0);
+
+drop table Emp
+
+
+
+
+create table Emp( 
+Eno char(2), 
+Ename char(20) not null, 
+Emp_sal number(10,2) CONSTRAINTS Check_Sal check (Emp_sal>1000), 
+Emp_city varchar2(10) CONSTRAINTS Check_City check(Emp_city in('kolkata','mumbai')),  
+CONSTRAINTS Emp_Primary primary key(Eno));
+
+insert into  Emp values('E1','Aindrila',2000,'kolkata');
+insert into  Emp values('E2','Bipasha',4000,'Delhi');
+
+drop table Emp
+
+
+
+
+
+create table Emp( 
+Eno char(2) CONSTRAINTS Check_Eno check (Eno like 'E%'), 
+Ename char(20) not null, 
+Emp_sal number(10,2) CONSTRAINTS Check_Sal check (Emp_sal>1000), 
+Emp_city varchar2(10) CONSTRAINTS Check_City check(Emp_city in('kolkata','mumbai')),  
+CONSTRAINTS Emp_Primary primary key(Eno));
+
+insert into  Emp values('E1','Aindrila',2000,'kolkata');
+insert into  Emp values('v2','Bipasha',4000,'mumbai');
+
+select * from USER_CONSTRAINTS where table_name = 'EMP';
+
+drop table Emp
+
+
+
+
+
+--Default Value
+
+create table Emp( 
+Eno char(2) check (Eno like 'E%'), 
+Ename char(20) not null, 
+Emp_sal number(10,2) default 1050 CONSTRAINTS Check_Sal check (Emp_sal>1000), 
+Emp_city varchar2(10) check(Emp_city in('kolkata','mumbai')),  
+CONSTRAINTS Emp_Primary primary key(Eno));
+
+insert into  Emp values('E1','Aindrila',2000,'kolkata');
+insert into  Emp (Eno,Ename,Emp_city) values('E2','Bipasha','mumbai');
+
+select * from Emp;
+
+drop table Dept
+
+
+
+
+---Unique  (** UNIQUE constraint allows for one NULL value and  you can have many UNIQUE constraints per table)
+
+create table Student( 
+S_Name char(20), 
+S_Id number(3) Primary key, 
+Ph_no number(10) unique, 
+Dept_no varchar2(2));
+
+drop table Student;
+
+
+
+--Foriegn Key Constraint
+
+--------Coulmn Level 
+
+create table Dept(D_no number(2) primary key, D_name varchar2 (15));
+
+create table Emp( 
+Eno char(2) check (Eno like 'E%'), 
+Ename char(20) not null, 
+Emp_sal number(10,2) default 1050 CONSTRAINTS Check_Sal check (Emp_sal>1000), 
+Emp_city varchar2(10) check(Emp_city in('kolkata','mumbai')), 
+D_no number(2) CONSTRAINTS Emp_frgn  references Dept(D_no), 
+CONSTRAINTS Emp_Primary primary key(Eno));
+
+drop table Emp
+drop table Dept
+
+
+--------Table Level 
+
+create table Dept(D_no number(2) primary key, D_name varchar2 (15));
+
+create table Emp( 
+Eno char(2) check (Eno like 'E%'), 
+Ename char(20) not null, 
+Emp_sal number(10,2) default 1050 CONSTRAINTS Check_Sal check (Emp_sal>1000), 
+Emp_city varchar2(10) check(Emp_city in('kolkata','mumbai')), 
+D_no number(2) CONSTRAINTS Emp_frgn references Dept(D_no), 
+CONSTRAINTS Emp_Primary primary key(Eno));
+
+select * from USER_CONSTRAINTS where table_name = 'EMP';
+
+insert into Dept values(1,'Marketing');
+insert into Dept values(2,'Accounts');
+
+insert into  Emp values('E1','Aindrila','2000','kolkata',1);
+insert into  Emp (Eno,Ename,Emp_city) values('E2','Bipasha','mumbai',2);
+insert into  Emp (Eno,Ename,Emp_city,D_no) values('E2','Bipasha','mumbai',2);
+
+select * from dept;
+select * from Emp;
+
+drop table Emp
+drop table Dept
+
+
+
+
+
+create table Dept(Dept_no number(2) primary key, D_name varchar2 (15));
+
+create table Emp( 
+Eno char(2) check (Eno like 'E%'), 
+Ename char(20) not null, 
+Emp_sal number(10,2) default 1050 CONSTRAINTS Check_Sal check (Emp_sal>1000), 
+Emp_city varchar2(10) check(Emp_city in('kolkata','mumbai')), 
+D_no number(2), 
+CONSTRAINTS Emp_Primary primary key(Eno), 
+CONSTRAINTS Emp_frgn Foreign key (D_no) references Dept(Dept_no));
+
+                            OR
+
+create table Emp( 
+Eno char(2) CONSTRAINTS Emp_Primary Primary key CONSTRAINTS Check_Eno check (Eno like 'E%'), 
+Ename char(20) not null, 
+Emp_sal number(10,2) default 1050 CONSTRAINTS Check_Sal check (Emp_sal>1000), 
+Emp_city varchar2(10) check(Emp_city in('kolkata','mumbai')), 
+D_no number(2) CONSTRAINTS Emp_frgn references Dept(Dept_no));
+
+
+
+insert into Dept values(1,'Marketing');
+insert into Dept values(2,'Accounts');
+
+insert into  Emp values('E1','Aindrila','2000','kolkata',1);
+insert into  Emp (Eno,Ename,Emp_city,D_no) values('E2','Bipasha','mumbai',2);
+
+select * from dept;
+select * from Emp;
+
+delete from Dept where Dept_no=1;
+
+drop table Emp    --delete child 
+drop table Dept   --delete parent ** Otherwise not possible
+
+
+
+
+
+--ON Delete Cascade
+
+create table Dept(Dept_no number(2) primary key, D_name varchar2 (15));
+
+create table Emp( 
+Eno char(2) check (Eno like 'E%'), 
+Ename char(20) not null, 
+Emp_sal number(10,2) default 1050 CONSTRAINTS Check_Sal check (Emp_sal>1000), 
+Emp_city varchar2(10) check(Emp_city in('kolkata','mumbai')), 
+D_no number(2), 
+CONSTRAINTS Emp_Primary primary key(Eno), 
+CONSTRAINTS Emp_frgn Foreign key (D_no) references Dept(Dept_no) on delete cascade);
+
+insert into Dept values(1,'Marketing');
+insert into Dept values(2,'Accounts');
+
+insert into  Emp values('E1','Aindrila','2000','kolkata',1);
+insert into  Emp (Eno,Ename,Emp_city,D_no) values('E2','Bipasha','mumbai',2);
+
+
+select * from dept;
+select * from Emp;
+
+delete from Dept where Dept_no=1;
+select * from Emp;
+
+drop table Emp
+drop table Dept
+
+
+
+
+
+
+--ON Delete Set NULL
+
+
+create table Dept(Dept_no number(2) primary key, D_name varchar2 (15));
+
+create table Emp( 
+Eno char(2) check (Eno like 'E%'), 
+Ename char(20) not null, 
+Emp_sal number(10,2) default 1050 CONSTRAINTS Check_Sal check (Emp_sal>1000), 
+Emp_city varchar2(10) check(Emp_city in('kolkata','mumbai')), 
+D_no number(2), 
+CONSTRAINTS Emp_Primary primary key(Eno), 
+CONSTRAINTS Emp_frgn Foreign key (D_no) references Dept(Dept_no) on delete Set Null);
+
+insert into Dept values(1,'Marketing');
+insert into Dept values(2,'Accounts');
+
+insert into  Emp values('E1','Aindrila','2000','kolkata',1);
+insert into  Emp (Eno,Ename,Emp_city,D_no) values('E2','Bipasha','mumbai',2);
+
+select * from dept;
+select * from Emp;
+
+delete from Dept where Dept_no=1;
+select * from Emp;
+
+drop table Emp
+drop table Dept

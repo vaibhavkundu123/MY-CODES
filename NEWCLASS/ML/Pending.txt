@@ -1,1 +1,4 @@
-- Adjusted R^2
+ensemble method
+regularizer
+optimizer
+softmax

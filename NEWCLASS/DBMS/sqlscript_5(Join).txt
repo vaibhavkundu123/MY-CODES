@@ -1,0 +1,257 @@
+JOIN
+----
+
+The purpose of a join is to combine the data from two or more tables, views, or materialized views. 
+A join is actually performed whenever multiple tables appear in the FROM clause of the query and by the where clause 
+which combines the specified rows of tables. If a join involves in more than two tables then Oracle joins first two tables based on the 
+joins condition and then compares the result with the next table and so on. If any two of the table participating in 
+joining with a column name in common, then it is necessary to maintain all references to these columns throughout the query
+with table names to avoid ambiguity.
+
+
+Student		            		
+Name       Id  Dept_no	
+Bipasha     1    d1
+Aindrila    2    d2
+Pratik      3    d3
+Nill        4    d2
+Syam        5    --
+
+
+Dept				
+Dept_no   Dept_Name
+d1	   CSE         
+d2	   ECE
+d3	   IT
+d4	   CE
+
+
+
+EQUIJOIN:
+	An equijoin is such a join which performs against a join condition containing an equality operator. 
+	It combines rows of one table associated with one or more rows in another table based on the equality of column values or expressions.
+	
+
+select * from Student,Dept where Student.Dept_no=Dept.Dept_no;
+
+Name        Id  Dept_no	Dept_no	Dept_Name
+Bipasha     1    d1       d1      CSE
+Aindrila    2    d2       d2      ECE
+Pratik      3    d3       d3      IT
+Nill        4    d2       d2      ECE
+
+
+
+NATURAL JOIN :
+
+	The join is based on all the columns in the two tables that have the same name and data types.
+	The join creates, by using the NATURAL JOIN keywords.
+	It selects rows from the two tables that have equal values in all matched columns.
+	When specifying columns that are involved in the natural join, do not qualify the column name 
+        with a table name or table alias.
+
+
+SELECT * FROM Student NATURAL JOIN Dept;
+
+Name        Id  Dept_no	   Dept_Name
+Bipasha     1    d1          CSE
+Aindrila    2    d2          ECE
+Pratik      3    d3          IT
+Nill        4    d2          ECE
+
+
+
+(INNER) JOIN:
+             Returns records that have matching values in both tables
+
+SELECT * FROM  Student Inner Join Dept ON Student.Dept_no=Dept.Dept_no;
+
+Name        Id  Dept_no	Dept_no	Dept_Name
+Bipasha     1    d1       d1      CSE
+Aindrila    2    d2       d2      ECE
+Pratik      3    d3       d3      IT
+Nill        4    d2       d2      ECE
+
+
+
+
+
+
+LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+
+SELECT Name,Id,Student.Dept_no,Dept_Name FROM Student LEFT JOIN Dept ON Student.Dept_no=Dept.Dept_no;
+
+Name        Id  Dept_no	Dept_Name
+Bipasha     1    d1       CSE
+Aindrila    2    d2       ECE
+Pratik      3    d3       IT
+Nill        4    d2       ECE
+Syam        5    d7       ---
+
+
+
+
+
+RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+
+SELECT Name,Id,Dept.Dept_no,Dept_Name FROM Student RIGHT JOIN Dept ON Student.Dept_no=Dept.Dept_no;
+
+Name        Id  Dept_no	Dept_Name
+Bipasha     1    d1       CSE
+Aindrila    2    d2       ECE
+Pratik      3    d3       IT
+Nill        4    d2       ECE
+-----       --   d4	  CE
+
+
+
+
+FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table.
+
+SELECT Name,Dept_Name FROM Student FULL OUTER JOIN Dept ON Student.Dept_no=Dept.Dept_no; 
+
+Name        	Dept_Name
+Bipasha           CSE
+Aindrila          ECE
+Pratik            IT
+Nill              ECE
+Syam              ---
+----		  CE
+
+
+
+
+
+CROSS JOIN:
+ 
+        The CROSS JOIN clause produces the cross-product of two tables. A cross join or Cartesian product is 
+        formed when every row from one table is joined to all rows in another. Suppose, the source and target tables have four and three 
+        rows,respectively, a cross join between them results in (5 × 4 = 20) rows being returned provided by 
+        there is no WHERE clause have been applied with the cross join statement.
+
+SELECT table1.column, table2.column FROM table1 CROSS JOIN table2;
+
+
+
+
+
+ANTI JOIN:
+	Anti-join is used to make the queries run faster. It is a very powerful SQL construct Oracle offers for faster queries.
+        Anti-join between two tables returns rows from the first table where no matches are found in the second            
+        table.Anti-joins are written using the NOT EXISTS or NOT IN constructs.
+
+
+SELECT Dept.Dept_no, Dept.dept_name FROM Dept WHERE NOT EXISTS (SELECT 1 FROM Student WHERE Student.Dept_no = Dept.Dept_no) 
+ ORDER BY Dept.Dept_no;  
+
+Dept_no   Dept_Name
+d4	   CE
+
+
+
+
+SEMI JOIN :
+	Semi-join is introduced in Oracle 8.0. It provides an efficient method of performing a WHERE EXISTS sub-query.
+	A semi-join returns one copy of each row in first table for which at least one match is found.
+	Semi-joins are written using the EXISTS construct.
+
+
+SELECT Dept.Dept_no, Dept.dept_name FROM Dept WHERE EXISTS ( SELECT 1 FROM Student WHERE Student.Dept_no = Dept.Dept_no) 
+ ORDER BY Dept.Dept_no;  
+
+Dept_no   Dept_Name
+d1	   CSE         
+d2	   ECE
+d3	   IT
+
+
+Difference between anti-join and semi-join
+
+	While a semi-join returns one copy of each row in the first table for which at least one match is found, 
+        an anti-join returns one copy of each row in the first table for which no match is found.
+
+SELF JOIN:
+	
+	A self join is a join in which a table is joined with itself.
+	To join a table itself means that each row of the table is combined with itself and with every other row of the                        
+        table.The table appears twice in the FROM clause and is followed by table aliases that qualify column names 
+        in the join condition.The self join can be viewed as a join of two copies of the same table. The table is not         
+        actually copied, but SQL performs the command as though it were.
+	To perform a self join, Oracle Database combines and returns rows of the table that satisfy the join condition
+
+
+Emp
+
+Name Id  Address   Mgr_id
+A     1   mumbai    ---	
+B     2	  kol       1
+C     3   chennai   1
+D     4	  delhi     2
+E     5   kol       3
+
+SELECT a.name||' works for '||b.name as "Employees and Their Managers" FROM Emp a, Emp b where a.Mgr_id=b.id;
+
+Employees and Their Managers
+---------------------------
+B works for A
+C works for A
+D works for B
+E works for C
+
+
+-----------------------------------------------------------------------------------------------------
+Emp
+Eno Ename     Dno
+1   Anil      D1
+2   Bipasha   D2
+3   Aindrila  D2
+
+Dept
+Dno Dname
+D1   Accounts
+D2   IT
+
+Contact
+Eno Location
+1   Kolkata
+2   Kolkata
+3   Chennai
+
+
+Euqi Join(Emp & Dept)
+
+select Emp.Eno,Emp.Ename,Dept.Dno,Dept.Dname from Emp,Dept where Emp.Dno=Dept.Dno
+
+Eno Ename     Dno  Dname
+1   Anil      D1   Accounts
+2   Bipasha   D2   IT
+3   Aindrila  D2   IT
+
+select Emp.Eno,Emp.Ename,Contact.Location,Dept.Dno,Dept.Dname from Emp,Dept,Contact
+  where Emp.Dno=Dept.Dno and Emp.Eno=Conatct.Eno;
+
+Eno Ename    Location	 Dno  Dname
+1   Anil      Kolkata	 D1   Accounts
+2   Bipasha   Kolkata	 D2   IT
+3   Aindrila  Chennai	 D2   IT
+
+----------------------------------------------------------------------------------------------------------------
+Emp
+Eno Ename     Dno
+1   Anil      D1
+2   Bipasha   D2
+3   Aindrila  D2
+
+
+Dept
+Dno Dname
+1   Accounts
+2   IT
+
+
+*Count the Employee of each Dept and display the Department name also.
+select count(*) "No_of_Employee",Dept.Dname from Emp,Dept where Emp.Dno=Dept.Dno group by Dept.Dname
+
+ No_of_Employee   Dname
+   1	        Accounts
+   2	           IT

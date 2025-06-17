@@ -1,0 +1,192 @@
+create table Dept( 
+Dept_no varchar2(2) Primary key, 
+Dept_name char(20));
+
+create table Student( 
+S_Name char(20) Primary key, 
+S_Id number(3), 
+Ph_no number(10), 
+Dept_no varchar2(2));
+
+insert into Dept values ('D3','ECE');
+insert into Dept values ('D4','ME');
+insert into Dept values ('D1','CS');
+insert into Dept values ('D2','IT');
+
+Select * from Dept;
+
+insert into Student values('Bipasha',1,9867345654,'D1');
+insert into Student values('Aindrila',2,9867343243,'D3');
+insert into Student values('Pratik',3,9835634537,'D2');
+insert into Student values('Neil',4,9835632212,'D2');
+
+select * from Student;
+
+select S_name from Student;
+
+select S_name,S_id from Student;
+
+select S_name,S_id from Student where Dept_no='D2';
+select S_name,S_id from Student where Dept_no in 'D2';
+
+
+select * from Dept;
+
+select * from Dept order by Dept_no;
+               or
+select * from Dept order by Dept_no asc;
+select * from Dept order by Dept_no desc;
+
+
+select * from Dept where Dept_name like 'E%';
+select * from Dept where Dept_name like '%E';
+select * from Dept where Dept_name like '%E%';
+select * from Dept where Dept_name like '_C%';
+select * from Dept where Dept_name like '_S%';
+
+select * from Student;
+
+
+--Update
+
+update Student set Dept_no='D1' where S_ID=3;
+select * from Student;
+commit;
+rollback
+select * from Student;
+
+
+update Student set Dept_no='D1', Ph_no='8240987645' where S_ID=2;
+select * from Student;
+
+
+--Delete
+
+delete Student where S_Id=3;
+select * from Student;
+
+
+--Alter Table
+
+alter table Student add (Address varchar2(20));
+
+select * from Student;
+
+alter table Student modify(S_ID number(10));
+
+
+insert into Student values('Anindita',2,9867987654,'D4','kolkata');
+insert into Student values('Sayantika',2,9867343212,'D3','Patna');
+
+select * from Student;
+
+
+
+
+--Drop table
+
+drop table Student
+drop tableDept;
+
+
+create table Dept( 
+Dept_no varchar2(2) Primary key, 
+Dept_name char(20));
+
+insert into Dept values ('D3','ECE');
+insert into Dept values ('D4','ME');
+insert into Dept values ('D1','CS');
+insert into Dept values ('D2','IT');
+
+create table Student(  
+S_Name char(20) Primary key,  
+S_Id number(3),  
+Ph_no number(10),  
+Dept_no varchar2(2) references Dept(Dept_no));
+
+insert into Student values('Aindrila',2,9867343243,'D3');
+insert into Student values('Pratik',3,9835634537,'D2');
+insert into Student values('Neil',4,9835632212,'D2');
+insert into Student values('Bipasha',1,9867345654,'D1');
+insert into Student values('Anindita',2,9867987654,'D4');
+insert into Student values('Sayantika',2,9867343212,'D3');
+
+
+select * from Dept;
+select * from Student;
+
+drop table Student;
+drop table Dept;
+
+
+--Check constraint
+
+create table Student(  
+S_name char(20),  
+S_id varchar2(3) Primary key check(S_id like 'S%'),
+city varchar2(20) check (city in ('Kolkata',Mumbai')),  
+Ph_no number(10),  
+Dept_no varchar2(2) references Dept(Dept_no));
+
+insert into Student values('Bipasha','S1','Kolkata',9867345654,'D1');
+insert into Student values('Aindrila','S2','Mumabai',9867343243,'D3');
+insert into Student values('Pratik','S3','Mumabai',9835634537,'D2');
+insert into Student values('Neil','S4','Kolkata',9835632212,'D2');
+insert into Student values('Anindita','x5','Kolkata',9867987654,'D4');
+
+
+
+
+
+DDL
+	Create
+	Alter
+	Rename
+	Drop
+	Truncate
+
+create table Student(S_name char(20),S_id number(2));
+#Student(S_name,S_id)
+
+Alter table Student add(S_ph number(10));	--Add Column
+#Student(S_name,S_id,S_ph)
+
+Alter table Student drop column S_ph;		--Remove Column
+#Student(S_name,S_id)
+
+Alter table Student modify(S_id number(3));	--Increase the size of the Column
+#Student(S_name,S_id)
+
+Rename Student Btech_Student;			--Change the name of table
+#Btech_Student(S_name,S_id)
+
+Truncate Btech_Student;				--Empties a table Completely
+
+
+
+
+DML
+	Insert
+	Update
+	Delete
+
+insert into Btech_Student values('Rajdip',1);
+insert into Btech_Student(S_id) values(2);
+insert into Btech_Student(S_name,S_id) values('Pratik',3);
+insert into Btech_Student(S_name,S_id) values('Saheel',4);
+
+update Btech_Student set S_name="Bipasha" where S_id=3;	
+delete from Btech_Student where S_id=3;					
+
+
+
+
+
+
+
+
+
+
+
+
+

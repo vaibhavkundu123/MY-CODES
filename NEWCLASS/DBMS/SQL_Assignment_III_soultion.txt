@@ -1,0 +1,87 @@
+-- drop table emp;
+-- drop table projects;
+-- drop table dept;
+
+create table dept(
+	dno varchar2(3) constraints dept_pk primary key constraints check_dno check(dno like 'd%'),
+	dname varchar2(10) constraints check_dname unique
+);
+
+create table projects(
+	dno varchar2(3) constraints pro_frgn references dept(dno),
+	pid varchar2(5) constraints pid_nn not null constraints check_pid_pro check(pid like 'p%'),
+	pname varchar2(10),
+	pcredits number(2) constraints check_credit check(pcredits>=1 and pcredits<=10),
+	start_date date,
+	end_date date,
+    	constraints check_edate check(end_date>start_date),
+	constraints pro_ck primary key(dno,pid)
+);
+
+create table emp(
+	eno number(4),
+	ename varchar2(10),
+	ejob varchar2(9) default 'clerk' constraints check_job check(ejob in('clerk','mgr','amgr','gm','ceo')),
+	mgrid number(4),
+	dob date,
+	sal number(7,2) default 20001 constraints check_sal check(sal>20000),
+	comm number(7,2) default 1000,
+	dno varchar2(3) constraints emp_frgn references dept(dno),
+	pid varchar2(9) default 'clerk' constraints check_pid check(pid in('clerk','mgr','amgr','gm','ceo')),
+	date_of_join date,
+	constraints check_dob check(dob<date_of_join)
+);
+
+alter table emp add primary key(eno);
+alter table emp add constraints self_join foreign key (mgrid) references emp(eno);
+alter table emp drop constraints check_pid;
+alter table emp add constraint check_pid foreign key (pid) references projects(dno,pid);	//no of columns must match
+alter table emp add constraint check_pid foreign key (dno,pid) references projects(dno,pid);
+alter table emp modify pid varchar2(5);
+desc emp;
+alter table dept add locations varchar2(9) default 'bng' constraints check_loc check(locations in('bng','mng','mub','hyd','chn'));
+truncate table dept;
+
+insert into dept values('d1','marketing','chn');
+insert into dept values('d2','research','mng');
+insert into dept values('d3','administrator','bng');		--dname>10
+insert into dept(dno,locations) values('d4','bgg');		--bgg location is not allowed
+insert into dept values('d5','it','bng');
+insert into dept values(,'corporate','hyd');			--primary key field can't be null
+insert into dept values('d3','designer','bng');
+insert into dept values('d6','corporate','hyd');
+
+select * from dept;
+
+insert into projects(dno,pid,pcredits) values('d1','p1',2);
+insert into projects(dno,pid,pcredits) values('d2','p1',2);
+insert into projects(dno,pid,pcredits) values('d3','p2',7);
+insert into projects(dno,pid,pcredits) values('d1','p3',5);
+insert into projects(dno,pid,pcredits) values('d4','p2',7);		--d4 is not present in the dept table
+insert into projects(dno,pid,pcredits) values('d6','p4',7);
+insert into projects(dno,pid,pcredits) values('d3','p3',7);
+
+insert into emp(eno,ename,ejob,mgrid,dob,sal,comm,dno,pid,date_of_join) values(150,'jaitra','ceo',null,'10-DEC-1970',60000,30000,null,null,'3-DEC-1990');
+insert into emp(eno,ename,ejob,mgrid,dob,sal,comm,dno,pid,date_of_join) values(111,'raghu','gm',150,'10-DEC-1974',45000,15000,null,null,'3-DEC-1985');
+insert into emp(eno,ename,ejob,mgrid,dob,dno,pid,date_of_join) values(125,'manu','amgr',150,'10-DEC-1980','d4','p2','2-OCT-2002');	--parent key not found
+insert into emp(eno,ename,ejob,mgrid,dob,sal,dno,pid,date_of_join) values(100,'ravi','mgr',111,'10-OCT-1985',32000,'d1','p1','2-OCT-2001');
+insert into emp(eno,ejob,mgrid,dob,dno,pid,date_of_join) values(103,'aclerk',111,'10-DEC-1980','d1','p1','2-OCT-2001');		--aclerk invalid ename
+insert into emp(eno,ename,ejob,mgrid,dob,dno,pid,date_of_join) values(103,'rajdip','clerk',111,'2-OCT-1980','d1','p3','2-OCT-2002');
+insert into emp(eno,ename,ejob,mgrid,dob,dno,pid,date_of_join) values(103,'aniket','clerk',111,'10-DEC-1980','d1','p3','2-OCT-2001');	--duplicate value for pk field
+insert into emp(eno,ename,ejob,mgrid,dob,sal,dno,pid,date_of_join) values(102,'raviraj','clerk',100,'10-DEC-1980',24000,'d1','p3','12-NOV-2000');
+insert into emp(eno,ename,ejob,mgrid,dob,dno,pid,date_of_join) values(125,'manu','amgr',150,'10-DEC-1980','d4','p2','2-OCT-2002');	--parent key not found
+insert into emp(eno,ename,ejob,mgrid,dob,dno,pid,date_of_join) values(104,'pratik','clerk',100,'2-OCT-1980','d2','p1','2-OCT-2005');
+insert into emp(eno,ejob,mgrid,dob,dno,date_of_join) values(106,'mgr',100,'2-OCT-1986','d2','2-DEC-1985');		--dob can't be greater than joining date
+insert into emp(eno,ename,ejob,mgrid,dob,sal,dno,pid,date_of_join) values(123,'mahesh','clerk',106,'10-DEC-1974',25000,'d3','p2','2-OCT-2002');		--invalid manager id
+insert into emp(eno,ejob,mgrid,dob,dno,date_of_join) values(108,'clerk',106,'10-DEC-1970','d9','2-OCT-1985');	--invalid manager id
+insert into emp(eno,ejob,mgrid,dob,sal,date_of_join) values(null,'clerk',106,'10-DEC-1980',18000,'10-DEC-1980');	--primary key field can't be null
+insert into emp values(113,'rahul','clerk',111,'10-DEC-1974',72000,35000,'d6','p4','3-DEC-1985');
+insert into emp values(133,'rahul','clerk',113,'10-DEC-1974',62000,45000,'d6','p4','3-DEC-1985');
+insert into emp values(143,'rahul','gm',133,'10-DEC-1974',52000,55000,'d3','p3','3-DEC-1985');
+insert into emp values(153,'rahul','clerk',143,'10-DEC-1974',42000,65000,'d3','p3','3-DEC-1985');
+insert into emp values(163,'rahul','gm',133,'10-DEC-1974',32000,75000,'d3','p3','3-DEC-1985');
+
+select * from dept;
+select * from projects;
+select * from emp;
+
