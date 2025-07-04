@@ -1,4 +1,5 @@
 ensemble method
 regularizer
 optimizer
-softmax
+SoftMax
+decision tree - estimation
